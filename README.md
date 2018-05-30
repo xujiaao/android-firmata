@@ -11,7 +11,7 @@ application.
 
 This piece of code shows how to "Blink an LED" with Android-Firmata:
 
-````
+````kotlin
 class BlinkLedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
