@@ -7,7 +7,7 @@ Arduino (or other boards, such as [NodeMcu]...) which runs Firmata Protocol from
 application.
 
 
-## Getting Start
+## Get Started
 
 This piece of code shows how to "Blink an LED" with Android-Firmata:
 
