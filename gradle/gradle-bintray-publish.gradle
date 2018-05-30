@@ -1,0 +1,125 @@
+/**
+ * To publish a module to Maven local:
+ *     ./gradlew [module]:clean [module]:publishToMavenLocal
+ *
+ * To publish a module to Bintray:
+ * Set environmental variables BINTRAY_USER and BINTRAY_API_KEY to proper values and run
+ *     ./gradlew [module]:clean [module]:bintrayUpload
+ *
+ * Additionally, add the -PSNAPSHOT flag to replace artifact version names with "SNAPSHOT".
+ * Note that bintrayUpload tasks will not upload the artifact if this flag is used.
+ */
+
+def publicationConfig = [
+        publication: 'android',
+        snapshot   : hasProperty('SNAPSHOT'),
+        bintrayUser: System.getenv('BINTRAY_USER'),
+        bintrayKey : System.getenv('BINTRAY_API_KEY')
+] << ext.publicationConfig
+
+if (publicationConfig.snapshot) {
+    publicationConfig.artifactVersion = 'LATEST'
+}
+
+// -------------------------------------------------------------------------------------------------
+// Maven Publishing
+// -------------------------------------------------------------------------------------------------
+
+apply plugin: 'maven-publish'
+
+task sourceJar(type: Jar) {
+    classifier = 'sources'
+    from android.sourceSets.main.java.sourceFiles
+}
+
+publishing.publications {
+    "$publicationConfig.publication"(MavenPublication) {
+        groupId publicationConfig.artifactGroup
+        artifactId publicationConfig.artifactName
+        version publicationConfig.artifactVersion
+
+        artifact sourceJar
+        artifact("$buildDir/outputs/aar/$project.name-release.aar")
+
+        pom.withXml {
+            def dependenciesNode = asNode().appendNode('dependencies')
+            (configurations.compile.allDependencies + configurations.api.allDependencies).each {
+                if (it.group != null
+                        && it.name != null && !"unspecified".equals(it.name)
+                        && it.version != null && !"unspecified".equals(it.version)) {
+                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                    dependencyNode.appendNode('groupId', it.group)
+                    dependencyNode.appendNode('artifactId', it.name)
+                    dependencyNode.appendNode('version', it.version)
+                }
+            }
+        }
+    }
+}
+
+tasks.withType(PublishToMavenRepository).all { publishTask ->
+    publishTask.dependsOn build
+}
+
+tasks.withType(PublishToMavenLocal).all { publishTask ->
+    publishTask.dependsOn build
+}
+
+// -------------------------------------------------------------------------------------------------
+// Bintray
+// -------------------------------------------------------------------------------------------------
+
+apply plugin: 'com.jfrog.bintray'
+
+bintray {
+    user = publicationConfig.bintrayUser
+    key = publicationConfig.bintrayKey
+
+    publications = [publicationConfig.publication]
+
+    publish = true
+    dryRun = publicationConfig.snapshot
+
+    pkg {
+        repo = publicationConfig.bintrayRepo
+        name = publicationConfig.bintrayName
+        userOrg = publicationConfig.bintrayUserOrg ?: publicationConfig.bintrayUser
+
+        if (publicationConfig.containsKey('bintrayLicenses')) {
+            licenses = publicationConfig.bintrayLicenses
+        }
+
+        if (publicationConfig.containsKey('bintrayLabels')) {
+            labels = publicationConfig.bintrayLabels
+        }
+
+        if (publicationConfig.bintrayGithubRepo) {
+            githubRepo = publicationConfig.bintrayGithubRepo
+            githubReleaseNotesFile = publicationConfig.bintrayGithubReleaseNotesFile
+
+            def host = 'https://github.com'
+            vcsUrl = "$host/${publicationConfig.bintrayGithubRepo}.git"
+            websiteUrl = "$host/$publicationConfig.bintrayGithubRepo"
+            issueTrackerUrl = "$host/$publicationConfig.bintrayGithubRepo/issues"
+        }
+
+        if (publicationConfig.containsKey('bintrayVcsUrl')) {
+            vcsUrl = publicationConfig.bintrayVcsUrl
+        }
+
+        if (publicationConfig.containsKey('bintrayWebsiteUrl')) {
+            websiteUrl = publicationConfig.bintrayWebsiteUrl
+        }
+
+        if (publicationConfig.containsKey('bintrayIssueTrackerUrl')) {
+            issueTrackerUrl = publicationConfig.bintrayIssueTrackerUrl
+        }
+
+        version {
+            name = publicationConfig.artifactVersion
+            gpg {
+                sign = true
+            }
+        }
+    }
+}
