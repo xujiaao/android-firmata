@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.xujiaao.android.firmata.sample">
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <application
+        android:name=".SampleApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name=".SampleListActivity">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- *********************************************************************************** -->
+        <!-- Led -->
+        <!-- *********************************************************************************** -->
+
+        <activity
+            android:name=".led.SimpleLedActivity"
+            android:label="@string/title_led_simple">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="group"
+                android:value="@string/group_led" />
+        </activity>
+
+        <activity
+            android:name=".led.PwmLedActivity"
+            android:label="@string/title_led_pwm">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="group"
+                android:value="@string/group_led" />
+        </activity>
+
+        <activity
+            android:name=".led.Pca9685LedActivity"
+            android:label="@string/title_led_pca9685">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="group"
+                android:value="@string/group_led" />
+        </activity>
+
+        <!-- *********************************************************************************** -->
+        <!-- Servo -->
+        <!-- *********************************************************************************** -->
+
+        <activity
+            android:name=".motor.L298MotorActivity"
+            android:label="@string/title_motor_l298">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="group"
+                android:value="@string/group_motor" />
+        </activity>
+
+        <activity
+            android:name=".motor.Tb6612MotorActivity"
+            android:label="@string/title_motor_tb6612">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="group"
+                android:value="@string/group_motor" />
+        </activity>
+
+        <!-- *********************************************************************************** -->
+        <!-- Servo -->
+        <!-- *********************************************************************************** -->
+
+        <activity
+            android:name=".servo.SimpleServoActivity"
+            android:label="@string/title_servo_simple">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="group"
+                android:value="@string/group_servo" />
+        </activity>
+
+        <activity
+            android:name=".servo.Pca9685ServoActivity"
+            android:label="@string/title_servo_pca9685">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="group"
+                android:value="@string/group_servo" />
+        </activity>
+
+        <!-- *********************************************************************************** -->
+        <!-- Joystick -->
+        <!-- *********************************************************************************** -->
+
+        <activity
+            android:name=".joystick.JoystickActivity"
+            android:label="@string/title_joystick">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="group"
+                android:value="@string/group_joystick" />
+        </activity>
+
+        <!-- *********************************************************************************** -->
+        <!-- Others -->
+        <!-- *********************************************************************************** -->
+
+        <activity
+            android:name=".others.WallEActivity"
+            android:label="@string/title_others_wall_e">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="group"
+                android:value="@string/group_others" />
+        </activity>
+    </application>
+</manifest>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.LinearLayoutCompat style="@style/Sample.Container">
+
+        <com.xujiaao.android.firmata.sample.TipsView
+            android:id="@+id/tips"
+            style="@style/Sample.Tips"
+            app:image="@drawable/tips_joystick" />
+
+        <TextView
+            android:id="@+id/label_x"
+            style="@style/Sample.Action.Text"
+            android:enabled="false" />
+
+        <TextView
+            android:id="@+id/label_y"
+            style="@style/Sample.Action.Text"
+            android:enabled="false" />
+    </android.support.v7.widget.LinearLayoutCompat>
+</ScrollView>

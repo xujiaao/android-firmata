@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Sample.Container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.xujiaao.android.firmata.sample.TipsView
+        style="@style/Sample.Tips"
+        app:tips="@array/tips_others_wall_e" />
+
+    <LinearLayout style="@style/Sample.Action.Container">
+
+        <TextView
+            style="@style/Sample.Sub.Title"
+            android:text="@string/label_scale_l" />
+
+        <SeekBar
+            android:id="@+id/scale_l"
+            style="@style/Sample.Sub.Content"
+            android:max="100" />
+    </LinearLayout>
+
+    <LinearLayout style="@style/Sample.Action.Container">
+
+        <TextView
+            style="@style/Sample.Sub.Title"
+            android:text="@string/label_scale_r" />
+
+        <SeekBar
+            android:id="@+id/scale_r"
+            style="@style/Sample.Sub.Content"
+            android:max="100" />
+    </LinearLayout>
+
+    <io.github.controlwear.virtual.joystick.android.JoystickView
+        android:id="@+id/joystick"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:JV_backgroundColor="#009688"
+        app:JV_borderColor="#00796B"
+        app:JV_borderWidth="4dp"
+        app:JV_buttonColor="#FF6E40"
+        app:JV_buttonSizeRatio="15%"
+        app:JV_fixedCenter="false" />
+</android.support.v7.widget.LinearLayoutCompat>

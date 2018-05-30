@@ -1,0 +1,64 @@
+buildscript {
+    ext.kotlin_version = '1.2.41'
+    ext.kotlinx_coroutines_version = '0.22.5'
+    ext.anko_version = '0.10.5'
+    ext.support_libraries_version = '27.1.0'
+    ext.lifecycle_version = '1.1.1'
+
+    ext {
+        androidCompileSdkVersion = 27
+        androidBuildToolsVersion = '27.0.3'
+
+        androidMinSdkVersion = 19
+        androidTargetSdkVersion = 27
+
+        dep = [
+                /**
+                 * Libraries (Android).
+                 */
+                libKotlinStdlib            : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version",
+                libKotlinxCoroutinesCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version",
+                libKotlinxCoroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version",
+                libAnko                    : "org.jetbrains.anko:anko:$anko_version",
+                libAppcompatV7             : "com.android.support:appcompat-v7:$support_libraries_version",
+                libConstraintLayout        : 'com.android.support.constraint:constraint-layout:1.0.2',
+                libSupportAnnotations      : "com.android.support:support-annotations:$support_libraries_version",
+                libLifecycleCommon         : "android.arch.lifecycle:common:$lifecycle_version",
+                libLifecycleCompiler       : "android.arch.lifecycle:compiler:$lifecycle_version",
+                libLeakcanary              : 'com.squareup.leakcanary:leakcanary-android:1.5.4',
+                libLeakcanaryNoop          : 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4',
+                libVirtualJoystick         : 'io.github.controlwear:virtualjoystick:1.9.0',
+
+                /**
+                 * Libraries (Third Party).
+                 */
+                libEventBus                : 'org.greenrobot:eventbus:3.1.1',
+
+                /**
+                 * Modules.
+                 */
+                moduleAndroidFirmata       : project(':android-firmata'),
+        ]
+    }
+
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.0-alpha15'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

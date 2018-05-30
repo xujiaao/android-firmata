@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Android Firmata</string>
+
+    <string name="group_led">Led</string>
+    <string name="group_servo">Servo</string>
+    <string name="group_motor">Motor</string>
+    <string name="group_joystick">Joystick</string>
+    <string name="group_others">Others</string>
+
+    <string name="title_led_simple">Led</string>
+    <string name="title_led_pwm">Led - PWM</string>
+    <string name="title_led_pca9685">Led - PCA9685</string>
+
+    <string name="title_motor_l298">Motor - L298</string>
+    <string name="title_motor_tb6612">Motor - TB6612</string>
+
+    <string name="title_servo_simple">Servo</string>
+    <string name="title_servo_pca9685">Servo - PCA9685</string>
+
+    <string name="title_joystick">Joystick</string>
+
+    <string name="title_others_wall_e">WALL.E</string>
+
+    <string name="menu_transport">Transport</string>
+    <string name="menu_reset">Reset</string>
+    <string name="menu_auto_connect">Auto Connect</string>
+    <string name="menu_connect">Connect</string>
+    <string name="menu_disconnect">Disconnect</string>
+
+    <string name="dialog_transport_title">Transport</string>
+    <string name="dialog_connecting_message">Connecting…</string>
+    <string name="dialog_error_title">Error Occurs</string>
+    <string name="dialog_error_message_format">%s\n\nTry again?</string>
+
+    <string name="label_switch">On/Off</string>
+    <string name="label_blink">Blink</string>
+    <string name="label_pulse">Pulse</string>
+    <string name="label_fade_in">Fade In</string>
+    <string name="label_fade_out">Fade Out</string>
+    <string name="label_smooth">Smooth</string>
+    <string name="label_min">Min</string>
+    <string name="label_max">Max</string>
+    <string name="label_center">Center</string>
+    <string name="label_sweep">Sweep</string>
+    <string name="label_duration">Duration</string>
+    <string name="label_speed">Speed</string>
+    <string name="label_forward">Forward</string>
+    <string name="label_backward">Backward</string>
+    <string name="label_stop">Stop</string>
+    <string name="label_scale_l">L Scale</string>
+    <string name="label_scale_r">R Scale</string>
+
+    <!-- *************************************************************************************** -->
+    <!-- Tips (Led) -->
+    <!-- *************************************************************************************** -->
+
+    <string-array name="tips_led_simple">
+        <item>LED inserted directly into pin 13</item>
+    </string-array>
+
+    <string-array name="tips_led_pwm">
+        <item>LED pulse example that fades an LED in and out repeatedly. Requires LED on pin that supports PWM (usually denoted by ~)</item>
+        <item>&lt;b&gt;LED inserted directly into pin 11&lt;/b&gt;</item>
+    </string-array>
+
+    <!-- *************************************************************************************** -->
+    <!-- Tips (Others) -->
+    <!-- *************************************************************************************** -->
+
+    <string-array name="tips_others_wall_e">
+        <item>L Motor - in1: D8, in2: D7,  pwm: D6</item>
+        <item>R Motor - in1: D9, in2: D10, pwm: D11</item>
+    </string-array>
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.LinearLayoutCompat style="@style/Sample.Container">
+
+        <com.xujiaao.android.firmata.sample.TipsView
+            android:id="@+id/tips"
+            style="@style/Sample.Tips" />
+
+        <LinearLayout style="@style/Sample.Action.Container">
+
+            <TextView
+                style="@style/Sample.Sub.Title"
+                android:text="@string/label_duration" />
+
+            <SeekBar
+                android:id="@+id/duration"
+                style="@style/Sample.Sub.Content"
+                android:max="2000"
+                android:progress="1000" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/action_min"
+            style="@style/Sample.Action.Text"
+            android:text="@string/label_min" />
+
+        <TextView
+            android:id="@+id/action_max"
+            style="@style/Sample.Action.Text"
+            android:text="@string/label_max" />
+
+        <TextView
+            android:id="@+id/action_center"
+            style="@style/Sample.Action.Text"
+            android:text="@string/label_center" />
+
+        <TextView
+            android:id="@+id/action_sweep"
+            style="@style/Sample.Action.Text"
+            android:text="@string/label_sweep" />
+    </android.support.v7.widget.LinearLayoutCompat>
+</ScrollView>

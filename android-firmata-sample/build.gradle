@@ -1,0 +1,49 @@
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion androidCompileSdkVersion
+    buildToolsVersion androidBuildToolsVersion
+
+    defaultConfig {
+        applicationId 'com.xujiaao.android.firmata.sample'
+
+        versionCode 1
+        versionName "1.0.${new SimpleDateFormat('YYYYMMddHHmm').format(new Date())}"
+
+        minSdkVersion androidMinSdkVersion
+        targetSdkVersion androidTargetSdkVersion
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation dep.libKotlinStdlib
+    implementation dep.libKotlinxCoroutinesCore
+    implementation dep.libKotlinxCoroutinesAndroid
+    implementation dep.libAnko
+    implementation dep.libAppcompatV7
+    implementation dep.libConstraintLayout
+    implementation dep.libVirtualJoystick
+    implementation dep.moduleAndroidFirmata
+
+    debugImplementation dep.libLeakcanary
+    releaseImplementation dep.libLeakcanaryNoop
+}

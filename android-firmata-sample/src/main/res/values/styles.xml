@@ -1,0 +1,55 @@
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/color_primary</item>
+        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorAccent">@color/color_accent</item>
+    </style>
+
+    <style name="Sample" />
+
+    <style name="Sample.Container">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">vertical</item>
+        <item name="divider">@drawable/divider</item>
+        <item name="showDividers">middle</item>
+    </style>
+
+    <style name="Sample.Tips">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="Sample.Action">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">?listPreferredItemHeightSmall</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">16dp</item>
+        <item name="android:textAppearance">?textAppearanceListItem</item>
+    </style>
+
+    <style name="Sample.Action.Text">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">?selectableItemBackground</item>
+    </style>
+
+    <style name="Sample.Action.Container">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="Sample.Sub.Title" parent="">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:minWidth">120dp</item>
+        <item name="android:textAppearance">?textAppearanceListItem</item>
+    </style>
+
+    <style name="Sample.Sub.Content" parent="">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+</resources>

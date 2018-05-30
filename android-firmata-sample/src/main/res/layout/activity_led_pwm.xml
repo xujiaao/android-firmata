@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".led.SimpleLedActivity">
+
+    <android.support.v7.widget.LinearLayoutCompat style="@style/Sample.Container">
+
+        <com.xujiaao.android.firmata.sample.TipsView
+            style="@style/Sample.Tips"
+            app:image="@drawable/tips_led_pwm"
+            app:tips="@array/tips_led_pwm" />
+
+        <TextView
+            android:id="@+id/action_pulse"
+            style="@style/Sample.Action.Text"
+            android:text="@string/label_pulse" />
+
+        <TextView
+            android:id="@+id/action_fade_in"
+            style="@style/Sample.Action.Text"
+            android:text="@string/label_fade_in" />
+
+        <TextView
+            android:id="@+id/action_fade_out"
+            style="@style/Sample.Action.Text"
+            android:text="@string/label_fade_out" />
+    </android.support.v7.widget.LinearLayoutCompat>
+</ScrollView>

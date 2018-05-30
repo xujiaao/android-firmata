@@ -1,0 +1,16 @@
+### Common
+.DS_Store
+
+### IntelliJ
+.idea
+*.iml
+
+### Gradle
+/.gradle
+/build
+/captures
+/reports
+/local.properties
+
+### Custom
+/.backup
