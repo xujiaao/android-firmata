@@ -1,9 +1,6 @@
-# Android-Firmata
-----
+# Android-Firmata (IN DEVELOPING ...)
 
-# IN DEVELOPING ...
-
-* IoT Library for Android Developers. Inspired by [Johnny-Five].*
+**IoT Library for Android Developers. Inspired by [Johnny-Five].**
 
 Android-Firmata is a client library of [Firmata] written in Kotlin. It allows controlling
 Arduino (or other boards, such as [NodeMcu]...) which runs Firmata Protocol from your Android
@@ -86,7 +83,7 @@ dependencies {
 
 ## Sample Application
 
-*All images in the sample application are copied from [Johnny-Five Examples Page].*
+**All images in the sample application are copied from [Johnny-Five Examples Page].**
 
 
 ## License
@@ -94,10 +91,10 @@ dependencies {
 Android-Firmata is distributed under the terms of the MIT License. See the [LICENSE] file.
 
 
-[Johnny-Five]:
-[Johnny-Five Bluetooth Guide]:
-[Johnny-Five Examples Page]:
-[Firmata]:
-[NodeMcu]:
+[Johnny-Five]: https://github.com/rwaldron/johnny-five
+[Johnny-Five Bluetooth Guide]: https://github.com/rwaldron/johnny-five/wiki/Getting-Started-with-Johnny-Five-and-JY-MCU-Bluetooth-Serial-Port-Module
+[Johnny-Five Examples Page]: http://johnny-five.io/examples
+[Firmata]: https://github.com/firmata/protocol
+[NodeMcu]: http://nodemcu.com
 [LICENSE]:
 
