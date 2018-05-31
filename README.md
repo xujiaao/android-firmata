@@ -1,6 +1,7 @@
 # Android-Firmata (IN DEVELOPING ...)
 
 [![Build Status](https://travis-ci.org/xujiaao/android-firmata.svg?branch=master)](https://travis-ci.org/xujiaao/android-firmata)
+[![Maven metadata URI](https://img.shields.io/maven-metadata/v/http/jcenter.bintray.com/com/xujiaao/android/android-firmata/maven-metadata.xml.svg)](http://jcenter.bintray.com/com/xujiaao/android/android-firmata/maven-metadata.xml)
 
 
 **IoT Library for Android Developers. Inspired by [Johnny-Five].**
