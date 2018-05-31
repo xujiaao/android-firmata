@@ -1,4 +1,4 @@
-package com.xujiaao.android.firmata.sample
+package com.xujiaao.android.firmata.sample.others
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity

@@ -2,9 +2,9 @@
 
 **IoT Library for Android Developers. Inspired by [Johnny-Five].**
 
-Android-Firmata is a client library of [Firmata] written in Kotlin. It allows controlling
-Arduino (or other boards, such as [NodeMcu]...) which runs Firmata Protocol from your Android
-application.
+Android-Firmata is a client library of [Firmata] written in Kotlin.
+It allows controlling Arduino (or other boards, such as [NodeMcu]...)
+which runs Firmata Protocol from your Android application.
 
 
 ## Get Started
@@ -83,7 +83,13 @@ dependencies {
 
 ## Sample Application
 
-**All images in the sample application are copied from [Johnny-Five Examples Page].**
+> **Note: All images in the sample application are copied from [Johnny-Five Examples Page].**
+
+![](docs/screenshot_sample_app.jpg)
+
+- To edit the Transport URI, open the Settings Menu, select: Transport
+
+- To Connect/Disconnect the board, click the action button in the top right corner
 
 
 ## License

@@ -2,7 +2,7 @@ package com.xujiaao.android.firmata.sample
 
 import android.content.Context
 
-const val DEFAULT_TRANSPORT = "tcp://192.168.4.1:3030"
+const val DEFAULT_TRANSPORT = "bt://HC-06"
 
 private const val SP_NAME = "sample"
 private const val SP_KEY_TRANSPORT = "transport"
