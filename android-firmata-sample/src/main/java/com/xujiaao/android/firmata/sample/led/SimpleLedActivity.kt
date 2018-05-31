@@ -28,7 +28,7 @@ class SimpleLedActivity : SampleActivity() {
     }
 
     override fun onBoardConnected(board: Board) {
-        mLed = board.Led(14)
+        mLed = board.Led(13)
     }
 
     override fun onBoardDisconnected() {
