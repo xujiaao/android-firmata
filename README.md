@@ -85,7 +85,7 @@ dependencies {
 }
 ````
 
-> Latest Version: [![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
+Latest Version: [![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
 
 
 ## Sample Application (:link: [Link](https://github.com/xujiaao/android-firmata/releases/latest))
