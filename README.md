@@ -77,7 +77,7 @@ In your build.gradle:
 
 ````
 dependencies {
-    implementation 'com.xujiaao.android:android-firmata:???????' // coming soon
+    implementation 'com.xujiaao.android:android-firmata:0.0.1'
 }
 ````
 

@@ -37,7 +37,7 @@ buildscript {
                 /**
                  * Modules.
                  */
-                moduleAndroidFirmata       : project(':android-firmata'),
+                moduleAndroidFirmata       : 'com.xujiaao.android:android-firmata:0.0.1',
         ]
     }
 
