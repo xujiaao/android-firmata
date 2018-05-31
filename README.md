@@ -46,12 +46,12 @@ class BlinkLedActivity : AppCompatActivity() {
 ![](https://github.com/rwaldron/johnny-five/raw/master/assets/led-blink.gif)
 
 
-### Setup Bluetooth Device
+## Setup Bluetooth Device
 
 Check out the [Johnny-Five Bluetooth Guide] to setup your Bluetooth Serial Port Module.
 
 
-### Setup Arduino
+## Setup Arduino
 
 - Download Arduino IDE
 
@@ -66,9 +66,9 @@ Check out the [Johnny-Five Bluetooth Guide] to setup your Bluetooth Serial Port 
 If the upload was successful, the board is now prepared and you can close the Arduino IDE.
 
 
-## NodeMcu
+## Setup NodeMcu (ESP8266)
 
-
+If you have a NodeMcu board, and want to control it through WiFi, please check out the [NodeMcu Guide].
 
 
 ## Installation
@@ -102,5 +102,6 @@ Android-Firmata is distributed under the terms of the MIT License. See the [LICE
 [Johnny-Five Examples Page]: http://johnny-five.io/examples
 [Firmata]: https://github.com/firmata/protocol
 [NodeMcu]: http://nodemcu.com
+[NodeMcu Guide]: wiki/Getting-Started-with-Android-Firmata-and-NodeMcu-Board
 [LICENSE]: LICENSE
 
