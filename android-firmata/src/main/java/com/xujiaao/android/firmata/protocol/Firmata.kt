@@ -69,7 +69,7 @@ class DefaultFirmata(private val sender: (data: ByteArray) -> Unit) : Firmata {
 
             @Suppress("UNCHECKED_CAST")
             mReceivers.getOrPut(type.name) {
-                ListenerRegistry()
+                ListenerRegistry(emptyArray())
             }.add(receiver as ((FirmataMessage) -> Unit))
         }
     }

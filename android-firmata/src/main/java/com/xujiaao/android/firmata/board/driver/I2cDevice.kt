@@ -99,7 +99,7 @@ class DefaultI2cDevice(
         readContinuously: Boolean,
         callback: I2cReadCallback
     ) {
-        (mListenerRegistry ?: ListenerRegistry<CallbackWrapper>().also {
+        (mListenerRegistry ?: ListenerRegistry<CallbackWrapper>(emptyArray()).also {
             mListenerRegistry = it
         }).add(CallbackWrapper(register, readContinuously, callback))
 

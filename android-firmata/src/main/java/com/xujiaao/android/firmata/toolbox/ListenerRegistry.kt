@@ -1,6 +1,6 @@
 package com.xujiaao.android.firmata.toolbox
 
-class ListenerRegistry<T> {
+class ListenerRegistry<T>(private val reifiedEmptyArray: Array<T>) {
 
     private val mListeners: LinkedHashSet<T> = LinkedHashSet()
 
@@ -36,8 +36,7 @@ class ListenerRegistry<T> {
             mArray = if (mListeners.isEmpty()) {
                 null
             } else {
-                @Suppress("UNCHECKED_CAST")
-                mListeners.toArray() as Array<T>
+                mListeners.toArray(reifiedEmptyArray)
             }
         }
 
