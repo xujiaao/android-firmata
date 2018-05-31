@@ -75,7 +75,7 @@ If the upload was successful, the board is now prepared and you can close the Ar
 If you have a NodeMcu board, and want to control it through WiFi, please check out the [NodeMcu Guide].
 
 
-## Installation [![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
+## Installation
 
 In your build.gradle:
 
@@ -84,6 +84,8 @@ dependencies {
     implementation 'com.xujiaao.android:android-firmata:${android_firmata_version}'
 }
 ````
+
+> Latest Version: [![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
 
 
 ## Sample Application (:link: [Link](https://github.com/xujiaao/android-firmata/releases/latest))
