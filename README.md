@@ -43,7 +43,7 @@ class BlinkLedActivity : AppCompatActivity() {
 }
 ````
 
-![](docs/led-blink.gif)
+![](assets/images/led-blink.gif)
 
 
 ## Setup Bluetooth Device
@@ -85,7 +85,7 @@ dependencies {
 
 > **Note: All images in the sample application are copied from [Johnny-Five Examples Page].**
 
-![](docs/sample-app.jpg)
+![](assets/images/sample-app.jpg)
 
 - To edit the Transport URI, open the Settings Menu, select: Transport
 
