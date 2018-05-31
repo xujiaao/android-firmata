@@ -77,8 +77,6 @@ If you have a NodeMcu board, and want to control it through WiFi, please check o
 
 ## Installation
 
-[![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
-
 In your build.gradle:
 
 ````
@@ -86,6 +84,8 @@ dependencies {
     implementation 'com.xujiaao.android:android-firmata:${android_firmata_version}'
 }
 ````
+
+[![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
 
 
 ## Sample Application (:link: [Link](https://github.com/xujiaao/android-firmata/releases/latest))
