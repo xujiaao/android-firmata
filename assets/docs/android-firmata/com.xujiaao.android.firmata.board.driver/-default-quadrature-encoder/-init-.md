@@ -1,0 +1,7 @@
+[android-firmata](../../index.md) / [com.xujiaao.android.firmata.board.driver](../index.md) / [DefaultQuadratureEncoder](index.md) / [&lt;init&gt;](./-init-.md)
+
+# &lt;init&gt;
+
+`DefaultQuadratureEncoder(board: `[`Board`](../../com.xujiaao.android.firmata.board/-board/index.md)`, id: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, pinA: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, pinB: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`)`
+`DefaultQuadratureEncoder(board: `[`Board`](../../com.xujiaao.android.firmata.board/-board/index.md)`, id: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, pinA: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, pinB: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`)`
+`DefaultQuadratureEncoder(board: `[`Board`](../../com.xujiaao.android.firmata.board/-board/index.md)`, id: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, pinA: `[`PinSpec`](../../com.xujiaao.android.firmata.board/-board/-pin-spec/index.md)`, pinB: `[`PinSpec`](../../com.xujiaao.android.firmata.board/-board/-pin-spec/index.md)`)`

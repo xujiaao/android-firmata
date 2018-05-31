@@ -1,0 +1,39 @@
+[android-firmata](../../index.md) / [com.xujiaao.android.firmata.board](../index.md) / [BoardWrapper](./index.md)
+
+# BoardWrapper
+
+`open class BoardWrapper : `[`Board`](../-board/index.md)
+
+### Constructors
+
+| Name | Summary |
+|---|---|
+| [&lt;init&gt;](-init-.md) | `BoardWrapper(base: `[`Board`](../-board/index.md)`)` |
+
+### Properties
+
+| Name | Summary |
+|---|---|
+| [base](base.md) | `val base: `[`Board`](../-board/index.md) |
+
+### Functions
+
+| Name | Summary |
+|---|---|
+| [close](close.md) | `open fun close(): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) |
+| [onClose](on-close.md) | `open fun onClose(): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) |
+
+### Extension Functions
+
+| Name | Summary |
+|---|---|
+| [I2cDevice](../../com.xujiaao.android.firmata.board.driver/-i2c-device.md) | `fun `[`Board`](../-board/index.md)`.I2cDevice(address: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`): `[`DefaultI2cDevice`](../../com.xujiaao.android.firmata.board.driver/-default-i2c-device/index.md) |
+| [Joystick](../../com.xujiaao.android.firmata.board.driver/-joystick.md) | `fun `[`Board`](../-board/index.md)`.Joystick(x: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, y: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, invertX: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = false, invertY: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = false): `[`DefaultJoystick`](../../com.xujiaao.android.firmata.board.driver/-default-joystick/index.md) |
+| [Led](../../com.xujiaao.android.firmata.board.driver/-led.md) | `fun `[`Board`](../-board/index.md)`.Led(pinAddress: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`): `[`DefaultLed`](../../com.xujiaao.android.firmata.board.driver/-default-led/index.md)<br>`fun `[`Board`](../-board/index.md)`.Led(pinName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): `[`DefaultLed`](../../com.xujiaao.android.firmata.board.driver/-default-led/index.md) |
+| [Motor](../../com.xujiaao.android.firmata.board.driver/-motor.md) | `fun `[`Board`](../-board/index.md)`.Motor(pwm: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, dir: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)` = -1, cdir: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)` = -1, invertPwm: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)`? = null, threshold: `[`Float`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html)`? = null): `[`DefaultMotor`](../../com.xujiaao.android.firmata.board.driver/-default-motor/index.md)<br>`fun `[`Board`](../-board/index.md)`.Motor(pwm: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, dir: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`? = null, cdir: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`? = null, invertPwm: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)`? = null, threshold: `[`Float`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-float/index.html)`? = null): `[`DefaultMotor`](../../com.xujiaao.android.firmata.board.driver/-default-motor/index.md) |
+| [Pca9685](../../com.xujiaao.android.firmata.board.driver.pca9685/-pca9685.md) | `fun `[`Board`](../-board/index.md)`.Pca9685(address: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)` = PCA9685_ADDRESS, frequency: `[`Double`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-double/index.html)` = PCA9685_FREQ_DEFAULT): `[`Pca9685`](../../com.xujiaao.android.firmata.board.driver.pca9685/-pca9685/index.md) |
+| [Pin](../../com.xujiaao.android.firmata.board.driver/-pin.md) | `fun `[`Board`](../-board/index.md)`.Pin(pinAddress: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`): `[`DefaultPin`](../../com.xujiaao.android.firmata.board.driver/-default-pin/index.md)<br>`fun `[`Board`](../-board/index.md)`.Pin(pinName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): `[`DefaultPin`](../../com.xujiaao.android.firmata.board.driver/-default-pin/index.md) |
+| [QuadratureEncoder](../../com.xujiaao.android.firmata.board.driver/-quadrature-encoder.md) | `fun `[`Board`](../-board/index.md)`.QuadratureEncoder(id: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, pinA: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, pinB: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`): `[`DefaultQuadratureEncoder`](../../com.xujiaao.android.firmata.board.driver/-default-quadrature-encoder/index.md)<br>`fun `[`Board`](../-board/index.md)`.QuadratureEncoder(id: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, pinA: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, pinB: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`): `[`DefaultQuadratureEncoder`](../../com.xujiaao.android.firmata.board.driver/-default-quadrature-encoder/index.md) |
+| [Servo](../../com.xujiaao.android.firmata.board.driver/-servo.md) | `fun `[`Board`](../-board/index.md)`.Servo(pinAddress: `[`Int`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-int/index.html)`, angleRange: `[`IntRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html)`? = null, pwmRange: `[`IntRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html)`? = null): `[`DefaultServo`](../../com.xujiaao.android.firmata.board.driver/-default-servo/index.md)<br>`fun `[`Board`](../-board/index.md)`.Servo(pinName: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, angleRange: `[`IntRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html)`? = null, pwmRange: `[`IntRange`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.ranges/-int-range/index.html)`? = null): `[`DefaultServo`](../../com.xujiaao.android.firmata.board.driver/-default-servo/index.md) |
+| [animate](../animate.md) | `fun `[`Peripheral`](../-peripheral/index.md)`.animate(animator: Animator): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>`fun `[`Peripheral`](../-peripheral/index.md)`.animate(interval: `[`Long`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)`, update: () -> `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)<br>`fun <T> `[`Peripheral`](../-peripheral/index.md)`.animate(frames: `[`Array`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-array/index.html)`<`[`T`](../animate.md#T)`>, interval: `[`Long`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-long/index.html)`, repeat: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = false, reverse: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = false, interpolator: TimeInterpolator = LinearInterpolator(), update: (`[`T`](../animate.md#T)`) -> `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html)`): `[`Unit`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-unit/index.html) |
+| [dumpProfile](../dump-profile.md) | `fun `[`Board`](../-board/index.md)`.dumpProfile(): `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html) |

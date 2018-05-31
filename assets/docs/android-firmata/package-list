@@ -1,0 +1,14 @@
+$dokka.format:gfm
+$dokka.linkExtension:md
+$dokka.location:com.xujiaao.android.firmata.toolbox$map(kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int, kotlin.Int)com.xujiaao.android.firmata.toolbox/kotlin.-int/map.md
+$dokka.location:com.xujiaao.android.firmata.toolbox$map(kotlin.Int, kotlin.ranges.IntRange, kotlin.ranges.IntRange)com.xujiaao.android.firmata.toolbox/kotlin.-int/map.md
+$dokka.location:com.xujiaao.android.firmata.transport$toTransport(kotlin.String, kotlin.Function1((kotlin.String, com.xujiaao.android.firmata.transport.Transport)))com.xujiaao.android.firmata.transport/kotlin.-string/to-transport.md
+com.xujiaao.android.firmata
+com.xujiaao.android.firmata.board
+com.xujiaao.android.firmata.board.driver
+com.xujiaao.android.firmata.board.driver.pca9685
+com.xujiaao.android.firmata.board.state
+com.xujiaao.android.firmata.protocol
+com.xujiaao.android.firmata.protocol.feature
+com.xujiaao.android.firmata.toolbox
+com.xujiaao.android.firmata.transport

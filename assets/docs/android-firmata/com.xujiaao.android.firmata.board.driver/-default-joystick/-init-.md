@@ -1,0 +1,6 @@
+[android-firmata](../../index.md) / [com.xujiaao.android.firmata.board.driver](../index.md) / [DefaultJoystick](index.md) / [&lt;init&gt;](./-init-.md)
+
+# &lt;init&gt;
+
+`DefaultJoystick(board: `[`Board`](../../com.xujiaao.android.firmata.board/-board/index.md)`, x: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, y: `[`String`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html)`, invertX: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = false, invertY: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)` = false)`
+`DefaultJoystick(board: `[`Board`](../../com.xujiaao.android.firmata.board/-board/index.md)`, pinX: `[`DefaultPin`](../-default-pin/index.md)`, pinY: `[`DefaultPin`](../-default-pin/index.md)`, invertX: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)`, invertY: `[`Boolean`](https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-boolean/index.html)`)`
