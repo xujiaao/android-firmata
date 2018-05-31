@@ -43,7 +43,7 @@ abstract class BaseLed(parent: PeripheralGroup) : BasePeripheral(parent), Led {
     }
 
     override fun fadeOut(duration: Long) {
-        animate(ObjectAnimator.ofFloat(this, "value", 0F, 1F).setDuration(duration))
+        animate(ObjectAnimator.ofFloat(this, "value", 1F, 0F).setDuration(duration))
     }
 
     override fun pulse(duration: Long) {
