@@ -1,5 +1,3 @@
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-
 # Android-Firmata (IN DEVELOPING ...)
 
 **IoT Library for Android Developers. Inspired by [Johnny-Five].**
@@ -83,7 +81,7 @@ dependencies {
 }
 ````
 
-## Sample Application
+## [Sample Application](https://github.com/xujiaao/android-firmata/releases/latest)
 
 > **Note: All images in the sample application are copied from [Johnny-Five Examples Page].**
 
@@ -93,7 +91,6 @@ dependencies {
 
 - To Connect/Disconnect the board, click the action button in the top right corner
 
-<a class="github-button" href="https://github.com/xujiaao/android-firmata/releases/latest" data-size="large" aria-label="Download xujiaao/android-firmata on GitHub">Download</a>
 
 ## License
 
