@@ -1,5 +1,8 @@
 # Android-Firmata (IN DEVELOPING ...)
 
+[![Build Status](https://travis-ci.org/xujiaao/android-firmata.svg?branch=master)](https://travis-ci.org/xujiaao/android-firmata)[![Build Status](https://travis-ci.org/xujiaao/android-firmata.svg?branch=master)](https://travis-ci.org/xujiaao/android-firmata)
+
+
 **IoT Library for Android Developers. Inspired by [Johnny-Five].**
 
 Android-Firmata is a client library of [Firmata] written in Kotlin.
