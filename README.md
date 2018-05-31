@@ -81,7 +81,7 @@ dependencies {
 }
 ````
 
-## [Sample Application](https://github.com/xujiaao/android-firmata/releases/latest)
+## Sample Application ([Link](https://github.com/xujiaao/android-firmata/releases/latest))
 
 > **Note: All images in the sample application are copied from [Johnny-Five Examples Page].**
 
