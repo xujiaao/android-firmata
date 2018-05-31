@@ -102,6 +102,6 @@ Android-Firmata is distributed under the terms of the MIT License. See the [LICE
 [Johnny-Five Examples Page]: http://johnny-five.io/examples
 [Firmata]: https://github.com/firmata/protocol
 [NodeMcu]: http://nodemcu.com
-[NodeMcu Guide]: wiki/Getting-Started-with-Android-Firmata-and-NodeMcu-Board
+[NodeMcu Guide]: https://github.com/xujiaao/android-firmata/wiki/Getting-Started-with-Android-Firmata-and-NodeMcu-Board
 [LICENSE]: LICENSE
 
