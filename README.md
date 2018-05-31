@@ -90,7 +90,7 @@ dependencies {
 
 ## Sample Application (:link: [Link](https://github.com/xujiaao/android-firmata/releases/latest))
 
-> **Note: All images in the sample application are copied from [Johnny-Five Examples Page].**
+> **Note: Images in the sample application are copied from [Johnny-Five Examples Page].**
 
 ![](assets/images/sample-app.jpg)
 
