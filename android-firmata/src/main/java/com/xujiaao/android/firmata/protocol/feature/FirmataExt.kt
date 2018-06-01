@@ -158,7 +158,7 @@ class CapabilityResponse(data: ByteArray) : FirmataMessage {
     }
 
     fun getPinModes(pin: Int): Map<Int, Int> {
-        return mPins[pin]
+        return mPins.getOrElse(pin) { emptyMap() }
     }
 
     companion object {

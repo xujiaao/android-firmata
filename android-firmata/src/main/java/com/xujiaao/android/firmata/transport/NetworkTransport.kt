@@ -17,6 +17,7 @@ class NetworkTransport(private val host: String, private val port: Int) : Transp
         val socket = try {
             Socket(host, port).apply {
                 soTimeout = 5_000
+                tcpNoDelay = true
             }
         } catch (e: RuntimeException) {
             throw IOException(e)
