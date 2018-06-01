@@ -7,6 +7,7 @@ import com.xujiaao.android.firmata.sample.R
 import com.xujiaao.android.firmata.sample.SampleActivity
 import kotlinx.android.synthetic.main.activity_led_pwm.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.sdk25.coroutines.onSeekBarChangeListener
 
 class PwmLedActivity : SampleActivity() {
 
@@ -15,6 +16,13 @@ class PwmLedActivity : SampleActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_led_pwm)
+
+        brightness.onSeekBarChangeListener {
+            onProgressChanged { _, progress, _ ->
+                mLed?.clearAnimation()
+                mLed?.setValue(progress.toFloat() / brightness.max)
+            }
+        }
 
         action_pulse.onClick {
             mLed?.pulse(1000)

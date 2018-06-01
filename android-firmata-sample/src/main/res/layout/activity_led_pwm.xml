@@ -13,6 +13,18 @@
             app:image="@drawable/tips_led_pwm"
             app:tips="@array/tips_led_pwm" />
 
+        <LinearLayout style="@style/Sample.Action.Container">
+
+            <TextView
+                style="@style/Sample.Sub.Title"
+                android:text="@string/label_brightness" />
+
+            <SeekBar
+                android:id="@+id/brightness"
+                style="@style/Sample.Sub.Content"
+                android:max="100" />
+        </LinearLayout>
+
         <TextView
             android:id="@+id/action_pulse"
             style="@style/Sample.Action.Text"

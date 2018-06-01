@@ -34,6 +34,7 @@
 
     <string name="label_switch">On/Off</string>
     <string name="label_blink">Blink</string>
+    <string name="label_brightness">Brightness</string>
     <string name="label_pulse">Pulse</string>
     <string name="label_fade_in">Fade In</string>
     <string name="label_fade_out">Fade Out</string>
