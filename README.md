@@ -1,8 +1,10 @@
-# Android-Firmata <span style="color: red">(IN DEVELOPING ...)</span>
+# Android-Firmata (IN DEVELOPING ...)
 
 [![Build Status](https://travis-ci.org/xujiaao/android-firmata.svg?branch=master)](https://travis-ci.org/xujiaao/android-firmata)
 [![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
 
+
+<span style="color: red">NOTE: THIS LIB IS CURRENTLY IN DEVELOPING, MOST OF FUNCTIONS HAS NOT BEEN TESTED!...</span>
 
 **IoT Library for Android Developers. Inspired by [Johnny-Five].**
 
