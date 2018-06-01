@@ -4,7 +4,7 @@
 [![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
 
 
-# NOTICE: THIS LIB IS CURRENTLY IN DEVELOPING, MOST OF FUNCTIONS HAS NOT BEEN TESTED!!!
+# NOTICE: THIS LIB IS CURRENTLY IN DEVELOPING, MOST OF FUNCTIONS HAVE NOT BEEN TESTED!!!
 
 **IoT Library for Android Developers. Inspired by [Johnny-Five].**
 
