@@ -1,4 +1,4 @@
-# Android-Firmata <font color="red">(IN DEVELOPING ...)</font>
+# Android-Firmata <span style="color: red">(IN DEVELOPING ...)</span>
 
 [![Build Status](https://travis-ci.org/xujiaao/android-firmata.svg?branch=master)](https://travis-ci.org/xujiaao/android-firmata)
 [![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
