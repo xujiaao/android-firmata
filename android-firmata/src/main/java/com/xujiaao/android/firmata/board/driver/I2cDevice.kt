@@ -76,7 +76,7 @@ class DefaultI2cDevice(
         write(if (register >= 0) {
             ByteArray(data.size + 1).apply {
                 this[0] = register.toByte()
-                System.arraycopy(data, 0, data, 1, data.size)
+                System.arraycopy(data, 0, this, 1, data.size)
             }
         } else data)
     }
