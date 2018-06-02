@@ -18,7 +18,7 @@ which runs Firmata Protocol from your Android Application.
 This piece of code shows how to "Blink an LED" with Android-Firmata:
 
 ````kotlin
-class BlinkLedActivity : AppCompatActivity() {
+class GetStartedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

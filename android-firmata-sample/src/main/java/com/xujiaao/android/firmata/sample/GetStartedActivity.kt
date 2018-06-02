@@ -1,4 +1,4 @@
-package com.xujiaao.android.firmata.sample.others
+package com.xujiaao.android.firmata.sample
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -7,7 +7,7 @@ import com.xujiaao.android.firmata.board.driver.Led
 import com.xujiaao.android.firmata.transport.toTransport
 import org.jetbrains.anko.toast
 
-class BlinkLedActivity : AppCompatActivity() {
+class GetStartedActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
