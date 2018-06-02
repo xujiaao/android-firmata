@@ -158,8 +158,8 @@
         <!-- *********************************************************************************** -->
 
         <activity
-            android:name=".others.WallEActivity"
-            android:label="@string/title_others_wall_e">
+            android:name=".others.VisualJoystickActivity"
+            android:label="@string/title_others_visual_joystick">
 
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />

@@ -1,36 +1,34 @@
 package com.xujiaao.android.firmata.sample.others
 
 import android.os.Bundle
-import android.util.Log
 import com.xujiaao.android.firmata.board.Board
 import com.xujiaao.android.firmata.board.BoardWrapper
 import com.xujiaao.android.firmata.board.driver.Motor
-import com.xujiaao.android.firmata.board.dumpProfile
 import com.xujiaao.android.firmata.sample.R
 import com.xujiaao.android.firmata.sample.SampleActivity
-import kotlinx.android.synthetic.main.activity_others_wall_e.*
+import kotlinx.android.synthetic.main.activity_others_visual_joystick.*
 
-private const val SP_NAME = "sample_wall_e"
+private const val SP_NAME = "sample_visual_joystick"
 private const val SP_KEY_SCALE_L = "scale_l"
 private const val SP_KEY_SCALE_R = "scale_r"
 
 private const val DEFAULT_SCALE_L = 1F
 private const val DEFAULT_SCALE_R = 1F
 
-class WallEActivity : SampleActivity() {
+class VisualJoystickActivity : SampleActivity() {
 
-    private var mWallE: WallEBoard? = null
+    private var mVisualJoystickBoard: VisualJoystickBoard? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_others_wall_e)
+        setContentView(R.layout.activity_others_visual_joystick)
 
         val sp = getSharedPreferences(SP_NAME, MODE_PRIVATE)
         scale_l.progress = (sp.getFloat(SP_KEY_SCALE_L, DEFAULT_SCALE_L) * scale_l.max).toInt()
         scale_r.progress = (sp.getFloat(SP_KEY_SCALE_R, DEFAULT_SCALE_R) * scale_r.max).toInt()
 
         joystick.setOnMoveListener { angle, strength ->
-            mWallE?.setMotor(
+            mVisualJoystickBoard?.setMotor(
                 radians = Math.toRadians(angle.toDouble()),
                 strength = strength / 100.0,
                 scaleL = scale_l.progress.toDouble() / scale_l.max,
@@ -49,22 +47,18 @@ class WallEActivity : SampleActivity() {
     }
 
     override fun onBoardConnected(board: Board) {
-        mWallE = WallEBoard(board)
+        mVisualJoystickBoard = VisualJoystickBoard(board)
     }
 
     override fun onBoardDisconnected() {
-        mWallE = null
+        mVisualJoystickBoard = null
     }
 }
 
-private class WallEBoard(board: Board) : BoardWrapper(board) {
+private class VisualJoystickBoard(board: Board) : BoardWrapper(board) {
 
     private val mMotorL = Motor(pwm = 6, dir = 7, cdir = 8)
     private val mMotorR = Motor(pwm = 11, dir = 10, cdir = 9)
-
-    init {
-        Log.d("WallE", dumpProfile())
-    }
 
     fun setMotor(radians: Double, strength: Double, scaleL: Double, scaleR: Double) {
         val x = Math.cos(radians)

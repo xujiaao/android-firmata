@@ -19,7 +19,7 @@
 
     <string name="title_joystick">Joystick</string>
 
-    <string name="title_others_wall_e">WALL.E</string>
+    <string name="title_others_visual_joystick">Visual Joystick</string>
 
     <string name="menu_transport">Transport</string>
     <string name="menu_reset">Reset</string>
@@ -77,7 +77,7 @@
     <!-- Tips (Others) -->
     <!-- *************************************************************************************** -->
 
-    <string-array name="tips_others_wall_e">
+    <string-array name="tips_others_visual_joystick">
         <item>L Motor - in1: D8, in2: D7,  pwm: D6</item>
         <item>R Motor - in1: D9, in2: D10, pwm: D11</item>
     </string-array>

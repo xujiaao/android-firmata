@@ -7,7 +7,7 @@
 
     <com.xujiaao.android.firmata.sample.TipsView
         style="@style/Sample.Tips"
-        app:tips="@array/tips_others_wall_e" />
+        app:tips="@array/tips_others_visual_joystick" />
 
     <LinearLayout style="@style/Sample.Action.Container">
 
