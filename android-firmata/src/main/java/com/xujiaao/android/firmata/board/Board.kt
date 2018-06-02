@@ -135,16 +135,13 @@ class DefaultPinSpec private constructor(
     companion object {
 
         fun from(board: Board, pinAddress: Int): DefaultPinSpec =
-            DefaultPinSpec(board, "D$pinAddress", pinAddress, false)
+            DefaultPinSpec(board, "$pinAddress", pinAddress, false)
 
         fun from(board: Board, pinName: String): DefaultPinSpec {
             return when {
                 pinName.startsWith('A', true) || pinName.startsWith('I', true) -> {
                     val pin = board.getAnalogPin(pinName.substring(1).toInt())
                     DefaultPinSpec(board, pinName, pin, true)
-                }
-                pinName.startsWith('D', true) -> {
-                    DefaultPinSpec(board, pinName, pinName.substring(1).toInt(), false)
                 }
                 else -> {
                     DefaultPinSpec(board, pinName, pinName.toInt(), false)
