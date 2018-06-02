@@ -136,7 +136,7 @@ class DefaultPin(private val board: Board, val spec: Board.PinSpec) : BasePeriph
     }
 
     private val mAnalogMessageReceiver: AnalogMessageReceiver = {
-        if (it.pin == spec.address) {
+        if (it.pin == spec.analogChannel) {
             mAnalogReadCallback?.invoke(this, it.value)
         }
     }

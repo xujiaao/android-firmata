@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import com.xujiaao.android.firmata.board.Board
 import com.xujiaao.android.firmata.board.driver.Joystick
+import com.xujiaao.android.firmata.board.driver.Led
 import com.xujiaao.android.firmata.sample.R
 import com.xujiaao.android.firmata.sample.SampleActivity
 import kotlinx.android.synthetic.main.activity_joystick.*
@@ -17,8 +18,12 @@ class JoystickActivity : SampleActivity() {
     }
 
     override fun onBoardConnected(board: Board) {
-        board.Joystick("A0", "A1").startUpdating { x, y ->
-            updateLabels(x, y)
+        board.Led(3).pulse(1000L)
+        board.Joystick("A0", "A1").apply {
+            startUpdating()
+            loop(100, {
+                updateLabels(x, y)
+            })
         }
     }
 

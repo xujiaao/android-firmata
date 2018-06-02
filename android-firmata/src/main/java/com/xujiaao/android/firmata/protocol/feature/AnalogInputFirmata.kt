@@ -45,7 +45,7 @@ typealias AnalogMessageReceiver = (AnalogMessage) -> Unit
 class AnalogMessage(data: ByteArray) : FirmataMessage {
 
     val pin = data[0].toInt() and 0x0F
-    val value = data[1].toInt() or (data[2].toInt() ushr 7)
+    val value = data[1].toInt() or (data[2].toInt() shl 7)
 
     companion object {
 

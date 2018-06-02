@@ -36,6 +36,9 @@ class DefaultJoystick(
     invertY: Boolean
 ) : BasePeripheral(board), Joystick {
 
+    private val mBaseX = toBase(pinX)
+    private val mBaseY = toBase(pinY)
+
     private var mX = 0F
     private var mY = 0F
     private var mUpdatingCallback: (Joystick.(Float, Float) -> Unit)? = null
@@ -79,25 +82,27 @@ class DefaultJoystick(
         pinY.close()
     }
 
-    private fun toAxis(pin: DefaultPin, value: Int, invert: Boolean): Float {
+    private fun toBase(pin: DefaultPin): Float {
         val resolution = board.getPinResolution(pin.spec.address, PIN_MODE_ANALOG)
         if (resolution <= 0) {
             return 0F
         }
 
-        var axis = value / (1 shl resolution).toFloat() - .5F
-        if (invert) {
-            axis *= -1
-        }
+        return (((1 shl resolution) - 1) / 2).toFloat()
+    }
 
-        return axis
+
+    private fun toAxis(value: Int, base: Float, invert: Boolean): Float {
+        return if (base != 0F) {
+            ((value - base) / base) * (if (invert) 1 else -1)
+        } else 0F
     }
 
     private val mAnalogReadCallback: Pin.(Int) -> Unit = { value ->
         if (this === pinX) {
-            mX = toAxis(pinX, value, invertX)
+            mX = toAxis(value, mBaseX, invertX)
         } else {
-            mY = toAxis(pinY, value, invertX)
+            mY = toAxis(value, mBaseY, invertY)
         }
 
         mUpdatingCallback?.invoke(this@DefaultJoystick, mX, mY)

@@ -33,6 +33,7 @@ interface Board : PeripheralGroup {
 
         val port: Int
         val address: Int
+        val analogChannel: Int
 
         val isAnalog: Boolean
         val isValid: Boolean
@@ -125,26 +126,29 @@ class DefaultPinSpec private constructor(
     board: Board,
     override val name: String,
     override val address: Int,
+    override val analogChannel: Int,
     override val isAnalog: Boolean
 ) : Board.PinSpec {
 
     override val isValid: Boolean = address >= 0 && address < board.pinsCount
+
     override val port = address ushr 3
     override val pinModes = board.getPinModes(address)
 
     companion object {
 
         fun from(board: Board, pinAddress: Int): DefaultPinSpec =
-            DefaultPinSpec(board, "$pinAddress", pinAddress, false)
+            DefaultPinSpec(board, "$pinAddress", pinAddress, -1, false)
 
         fun from(board: Board, pinName: String): DefaultPinSpec {
             return when {
                 pinName.startsWith('A', true) || pinName.startsWith('I', true) -> {
-                    val pin = board.getAnalogPin(pinName.substring(1).toInt())
-                    DefaultPinSpec(board, pinName, pin, true)
+                    val analogChannel = pinName.substring(1).toInt()
+                    val pin = board.getAnalogPin(analogChannel)
+                    DefaultPinSpec(board, pinName, pin, analogChannel, true)
                 }
                 else -> {
-                    DefaultPinSpec(board, pinName, pinName.toInt(), false)
+                    DefaultPinSpec(board, pinName, pinName.toInt(), -1, false)
                 }
             }
         }
