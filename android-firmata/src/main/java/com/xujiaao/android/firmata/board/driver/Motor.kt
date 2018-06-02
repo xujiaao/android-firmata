@@ -10,7 +10,11 @@ import kotlin.math.absoluteValue
 
 interface Motor : Peripheral {
 
-    fun start(speed: Float)
+    var speed: Float
+
+    fun forward(speed: Float)
+
+    fun backward(speed: Float)
 
     fun stop()
 }
@@ -31,9 +35,43 @@ abstract class BaseMotor<T>(
     private val mInvertPwm = invertPwm ?: false
     private val mThreshold = threshold ?: .1F
 
-    override fun start(speed: Float) = updateSpeed(speed)
+    override var speed: Float = 0F
+        set(value) {
+            val speed = (if (value.absoluteValue > mThreshold) value else 0F).coerceIn(-1F, 1F)
+            field = speed
 
-    override fun stop() = updateSpeed(0F)
+            if (dir != null && cdir != null) { // 3 pins motor.
+                updatePin(dir, speed > 0F)
+                updatePin(cdir, speed < 0F)
+
+                updatePin(pwm, speed.absoluteValue)
+            } else {
+                val dir = dir ?: cdir
+                if (dir != null) { // 2 pins motor.
+                    updatePin(dir, speed > 0F)
+
+                    if (mInvertPwm && speed > 0F) {
+                        updatePin(pwm, 1F - speed)
+                    } else {
+                        updatePin(pwm, speed.absoluteValue)
+                    }
+                } else { // non-directional motor.
+                    updatePin(pwm, if (speed > 0F) speed.absoluteValue else 0F)
+                }
+            }
+        }
+
+    override fun forward(speed: Float) {
+        this.speed = speed
+    }
+
+    override fun backward(speed: Float) {
+        this.speed = -speed
+    }
+
+    override fun stop() {
+        this.speed = 0F
+    }
 
     override fun onClose() {
         super.onClose()

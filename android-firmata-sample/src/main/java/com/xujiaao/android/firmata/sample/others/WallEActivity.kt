@@ -70,7 +70,7 @@ private class WallEBoard(board: Board) : BoardWrapper(board) {
         val x = Math.cos(radians)
         val y = Math.sin(radians)
 
-        mMotorL.start(((y - x) * strength * scaleL).toFloat())
-        mMotorR.start(((y + x) * strength * scaleR).toFloat())
+        mMotorL.speed = ((y - x) * strength * scaleL).toFloat()
+        mMotorR.speed = ((y + x) * strength * scaleR).toFloat()
     }
 }
