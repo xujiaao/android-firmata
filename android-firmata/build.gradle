@@ -42,7 +42,7 @@ dokka {
 ext.publicationConfig = rootProject.ext.publicationConfig + [
         artifactGroup                : 'com.xujiaao.android',
         artifactName                 : 'android-firmata',
-        artifactVersion              : '0.0.1',
+        artifactVersion              : '0.0.2',
         bintrayName                  : 'android-firmata',
         bintrayGithubReleaseNotesFile: "${rootProject.relativePath(project.projectDir)}/CHANGELOG.md",
 ]
