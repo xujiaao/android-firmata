@@ -9,5 +9,5 @@ fun Int.map(srcMin: Int, srcMax: Int, dstMin: Int, dstMax: Int): Int {
         return 0
     }
 
-    return ((this - srcMin) * (dstMax - dstMin) / srcRange).toInt() + srcMin
+    return ((this - srcMin) * (dstMax - dstMin) / srcRange).toInt() + dstMin
 }

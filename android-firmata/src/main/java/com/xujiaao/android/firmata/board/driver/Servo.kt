@@ -42,6 +42,8 @@ abstract class BaseServo(
 
     override fun goto(angle: Int, duration: Long) {
         if (duration <= 0) {
+            clearAnimation()
+
             this.angle = angle
         } else {
             val dst = angle.coerceIn(angleRange)
