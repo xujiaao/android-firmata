@@ -14,7 +14,7 @@ interface Motor : Peripheral {
 
     fun forward(speed: Float)
 
-    fun backward(speed: Float)
+    fun reverse(speed: Float)
 
     fun stop()
 }
@@ -32,7 +32,7 @@ abstract class BaseMotor<T>(
     threshold: Float?
 ) : BasePeripheral(parent), Motor {
 
-    private val mInvertPwm = invertPwm ?: false
+    private val mInvertPwm = invertPwm ?: true
     private val mThreshold = threshold ?: .1F
 
     override var speed: Float = 0F
@@ -65,7 +65,7 @@ abstract class BaseMotor<T>(
         this.speed = speed
     }
 
-    override fun backward(speed: Float) {
+    override fun reverse(speed: Float) {
         this.speed = -speed
     }
 
@@ -161,8 +161,8 @@ class DefaultMotor private constructor(
     ) : this(
         board,
         board.Pin(pwm),
-        if (dir > 0) board.Pin(dir) else null,
-        if (cdir > 0) board.Pin(cdir) else null,
+        if (dir >= 0) board.Pin(dir) else null,
+        if (cdir >= 0) board.Pin(cdir) else null,
         invertPwm,
         threshold
     )

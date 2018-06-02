@@ -21,10 +21,7 @@ abstract class MotorActivity : SampleActivity() {
             onProgressChanged { _, progress, _ ->
                 val speed = progress.toFloat() / speed.max
                 mMotor?.let {
-                    when {
-                        it.speed > 0F -> it.speed = speed
-                        it.speed < 0F -> it.speed = -speed
-                    }
+                    it.speed = speed * (if (it.speed >= 0F) 1F else -1F)
                 }
             }
         }
@@ -34,7 +31,7 @@ abstract class MotorActivity : SampleActivity() {
         }
 
         action_backward.onClick {
-            mMotor?.backward(speed.progress.toFloat() / speed.max)
+            mMotor?.reverse(speed.progress.toFloat() / speed.max)
         }
 
         action_stop.onClick {
