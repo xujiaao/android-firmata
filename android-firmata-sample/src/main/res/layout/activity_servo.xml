@@ -9,17 +9,21 @@
             android:id="@+id/tips"
             style="@style/Sample.Tips" />
 
+        <Switch
+            android:id="@+id/animation_enabled"
+            style="@style/Sample.Action"
+            android:text="@string/label_animate" />
+
         <LinearLayout style="@style/Sample.Action.Container">
 
             <TextView
                 style="@style/Sample.Sub.Title"
-                android:text="@string/label_duration" />
+                android:text="@string/label_angle" />
 
             <SeekBar
-                android:id="@+id/duration"
+                android:id="@+id/angle"
                 style="@style/Sample.Sub.Content"
-                android:max="2000"
-                android:progress="1000" />
+                android:max="100" />
         </LinearLayout>
 
         <TextView

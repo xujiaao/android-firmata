@@ -5,8 +5,12 @@ import com.xujiaao.android.firmata.board.Board
 import com.xujiaao.android.firmata.board.driver.Servo
 import com.xujiaao.android.firmata.sample.R
 import com.xujiaao.android.firmata.sample.SampleActivity
+import com.xujiaao.android.firmata.toolbox.map
 import kotlinx.android.synthetic.main.activity_servo.*
 import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.sdk25.coroutines.onSeekBarChangeListener
+
+private const val ANIMATION_DURATION = 500L
 
 abstract class ServoActivity : SampleActivity() {
 
@@ -16,16 +20,41 @@ abstract class ServoActivity : SampleActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_servo)
 
+        angle.onSeekBarChangeListener {
+            onStopTrackingTouch {
+                mServo?.let {
+                    val value = angle.progress.map(0..angle.max, it.angleRange)
+                    if (animation_enabled.isChecked) {
+                        it.goto(value, ANIMATION_DURATION)
+                    } else {
+                        it.goto(value)
+                    }
+                }
+            }
+        }
+
         action_min.onClick {
-            mServo?.gotoMin(duration.progress.toLong())
+            if (animation_enabled.isChecked) {
+                mServo?.gotoMin(ANIMATION_DURATION)
+            } else {
+                mServo?.gotoMin()
+            }
         }
 
         action_max.onClick {
-            mServo?.gotoMax(duration.progress.toLong())
+            if (animation_enabled.isChecked) {
+                mServo?.gotoMax(ANIMATION_DURATION)
+            } else {
+                mServo?.gotoMax()
+            }
         }
 
         action_center.onClick {
-            mServo?.gotoCenter(duration.progress.toLong())
+            if (animation_enabled.isChecked) {
+                mServo?.gotoCenter(ANIMATION_DURATION)
+            } else {
+                mServo?.gotoCenter()
+            }
         }
 
         action_sweep.onClick {

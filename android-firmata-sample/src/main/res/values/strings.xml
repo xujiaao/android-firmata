@@ -43,7 +43,8 @@
     <string name="label_max">Max</string>
     <string name="label_center">Center</string>
     <string name="label_sweep">Sweep</string>
-    <string name="label_duration">Duration</string>
+    <string name="label_animate">Enable Animation</string>
+    <string name="label_angle">Angle</string>
     <string name="label_speed">Speed</string>
     <string name="label_forward">Forward</string>
     <string name="label_backward">Backward</string>
