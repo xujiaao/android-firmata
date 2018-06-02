@@ -76,38 +76,6 @@
         <!-- *********************************************************************************** -->
 
         <activity
-            android:name=".motor.L298MotorActivity"
-            android:label="@string/title_motor_l298">
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.SAMPLE_CODE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="group"
-                android:value="@string/group_motor" />
-        </activity>
-
-        <activity
-            android:name=".motor.Tb6612MotorActivity"
-            android:label="@string/title_motor_tb6612">
-
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.SAMPLE_CODE" />
-            </intent-filter>
-
-            <meta-data
-                android:name="group"
-                android:value="@string/group_motor" />
-        </activity>
-
-        <!-- *********************************************************************************** -->
-        <!-- Servo -->
-        <!-- *********************************************************************************** -->
-
-        <activity
             android:name=".servo.SimpleServoActivity"
             android:label="@string/title_servo_simple">
 
@@ -133,6 +101,38 @@
             <meta-data
                 android:name="group"
                 android:value="@string/group_servo" />
+        </activity>
+
+        <!-- *********************************************************************************** -->
+        <!-- Motor -->
+        <!-- *********************************************************************************** -->
+
+        <activity
+            android:name=".motor.L298MotorActivity"
+            android:label="@string/title_motor_l298">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="group"
+                android:value="@string/group_motor" />
+        </activity>
+
+        <activity
+            android:name=".motor.Tb6612MotorActivity"
+            android:label="@string/title_motor_tb6612">
+
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.SAMPLE_CODE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="group"
+                android:value="@string/group_motor" />
         </activity>
 
         <!-- *********************************************************************************** -->
