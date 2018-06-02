@@ -53,6 +53,14 @@
     <string name="label_scale_r">R Scale</string>
 
     <!-- *************************************************************************************** -->
+    <!-- Tips (Common) -->
+    <!-- *************************************************************************************** -->
+
+    <string-array name="tips_untested">
+        <item><![CDATA[<b><font color="red">Notice: This sample has NOT been fully tested…</font></b>]]></item>
+    </string-array>
+
+    <!-- *************************************************************************************** -->
     <!-- Tips (Led) -->
     <!-- *************************************************************************************** -->
 
@@ -62,7 +70,7 @@
 
     <string-array name="tips_led_pwm">
         <item>LED pulse example that fades an LED in and out repeatedly. Requires LED on pin that supports PWM (usually denoted by ~)</item>
-        <item>&lt;b&gt;LED inserted directly into pin 11&lt;/b&gt;</item>
+        <item><![CDATA[<b>LED inserted directly into pin 11</b>]]></item>
     </string-array>
 
     <!-- *************************************************************************************** -->
