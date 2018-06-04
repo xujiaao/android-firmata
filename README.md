@@ -194,9 +194,9 @@ peripheral devices with Android-Firmata.
 
 ### Usage
 
-- [Download](https://github.com/xujiaao/android-firmata/releases/latest) and installed the Sample Application on your Android Device.
+- [Download](https://github.com/xujiaao/android-firmata/releases/latest) and install the Sample Application on your Android Device.
 
-- Select a smaple in the Home Page
+- Select a smaple
 
 - Follow the breadboard image in the Sample Page for wiring
 
