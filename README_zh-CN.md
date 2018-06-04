@@ -86,7 +86,7 @@ class GetStartedActivity : AppCompatActivity() {
 
 在连接到 Android-Firmata 之前, 您需要将蓝牙模块的波特率修改为 Firmata 默认的 `57600`.
 
-请参考: [Johnny-Five Bluetooth Guide]
+关于如何配置蓝牙模块, 请参考: [Johnny-Five Bluetooth Guide]
 
 
 #### 修改代码
@@ -157,13 +157,15 @@ Android-Firmata 使用 Transport URI 来指定 Android 和 Arduino 的通信方�
 
 - Bluetooth:
 
-    - `bt:<bluetooth_name>` *(使用蓝牙名称进行匹配)*
+  - `bt:<bluetooth_name>` *(使用蓝牙名称进行匹配)*
 
-      - **使用蓝牙名称连接时, 请确保蓝牙设备已和您的手机配对**
+    - **使用蓝牙名称连接时, 请确保蓝牙设备已和您的手机配对**
 
-    - `bt:<bluetooth_mac_address>` *(使用 Mac 地址进行匹配)*
+  - `bt:<bluetooth_mac_address>` *(使用 Mac 地址进行匹配)*
 
-- WiFi: `tcp:<board_ip_address>:<board_port>`
+- WiFi:
+
+  - `tcp:<board_ip_address>:<board_port>`
 
 
 ## 示例应用 (:link: [下载链接](https://github.com/xujiaao/android-firmata/releases/latest))
