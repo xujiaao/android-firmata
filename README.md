@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/xujiaao/android-firmata.svg?branch=master)](https://travis-ci.org/xujiaao/android-firmata)
 [![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
-
+[![中文文档](https://img.shields.io/badge/README-%E4%B8%AD%E6%96%87%E6%96%87%E6%A1%A3-red.svg?longCache=true)](README_zh-CN.md)
 
 **IoT Library for Android Developers. Inspired by [Johnny-Five].**
 
@@ -107,11 +107,11 @@ to let it know which device should be connected.
 
 For Bluetooth Connection, the URI can be either of:
 
-- `bt:<bluetooth_name>`
+- `bt:<bluetooth_name>` (Match the Bluetooth Name)
 
   - **Make sure the Bluetooth device has been bonded before connecting**
 
-- `bt:<bluetooth_mac_address>`
+- `bt:<bluetooth_mac_address>` (Match the Bluetooth Mac Address)
 
 For example:
 
