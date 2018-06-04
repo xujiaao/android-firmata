@@ -3,9 +3,9 @@
 [![Build Status](https://travis-ci.org/xujiaao/android-firmata.svg?branch=master)](https://travis-ci.org/xujiaao/android-firmata)
 [![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
 
-基于 [Firmata] 协议的 Android 物联网开发库 (Android 版 [Johnny-Five] :trollface:),
-使用 **Kotlin** 编写. 它允许您在 Android 应用中控制安装了 Firmata 协议的
-**Arduino** 开发板.
+基于 [Firmata] 协议的 Android 物联网开发库 (Android 版 [Johnny-Five] :trollface:), 使用 **Kotlin** 编写.
+
+它允许您在 Android 应用中控制安装了 Firmata 协议的 **Arduino** 开发板.
 
 
 ## 依赖
@@ -23,7 +23,7 @@ dependencies {
 
 ## 快速上手
 
-下面的示例展示如何通过 Android-Firmata 控制 LED 闪烁 (硬件版 "Hello World")
+下面的展示如何通过 Android-Firmata 控制 LED 灯闪烁 (硬件版 "Hello World")
 
 ````kotlin
 class GetStartedActivity : AppCompatActivity() {
@@ -60,7 +60,7 @@ class GetStartedActivity : AppCompatActivity() {
 ![](assets/images/led-blink.gif)
 
 
-## Guidance
+## 使用方法
 
 在使用 Android-Firmata 开发前, 您需要选择 Android 和 Arduino 设备间的连接方式:
 
@@ -84,14 +84,14 @@ class GetStartedActivity : AppCompatActivity() {
 
 #### 配置蓝牙模块
 
-Firmata 默认的波特率是 `57600`. 所以在连接到 Android-Firmata 之前, 需要进行一些配置.
+在连接到 Android-Firmata 之前, 您需要将蓝牙模块的波特率修改为 Firmata 默认的 `57600`.
 
-关于如何配置蓝牙模块, 请参考 [Johnny-Five Bluetooth Guide]
+请参考: [Johnny-Five Bluetooth Guide]
 
 
-#### Android 代码
+#### 修改代码
 
-为了让 Android 应用知道需要连接哪个设备, 您需要修改 Android 代码中的 [Transport URI](#transports):
+为了让 Android 连接到指定设备, 您需要修改 Android 代码中的 [Transport URI](#transports):
 
 可以使用下面两种 URI 进行蓝牙连接:
 
@@ -128,12 +128,12 @@ connectBoard("bt://HC-06".toTransport(), ...)
 
 #### 配置 NodeMcu
 
-关于如何 NodeMcu, 请参考  [Johnny-Five Bluetooth Guide]
+关于如何在 NodeMcu 上安装 StandardFirmataWiFi, 请参考 [NodeMcu Guide].
 
 
-#### Android 代码
+#### 修改代码
 
-使用 WiFi 连接的 [Transport URI](#transports) 如下:
+使用 WiFi 连接时, [Transport URI](#transports) 如下:
 
 - `tcp:<board_ip_address>:<board_port>`
 
@@ -153,7 +153,7 @@ connectBoard("tcp://192.168.4.1".toTransport(), ...)
 
 ### Transports
 
-Android-Firmata 使用 Transport URI 来确定 Android 和 Arduino 的通信方式:
+Android-Firmata 使用 Transport URI 来指定 Android 和 Arduino 的通信方式:
 
 - Bluetooth:
 
