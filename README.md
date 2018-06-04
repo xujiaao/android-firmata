@@ -83,7 +83,7 @@ Currently, these communication modes are supported:
 
   - Arduino IDE > Examples > Firmata > StandardFirmataPlus
 
-- A Bluetooth Serial Port Module
+- A Bluetooth Serial Port Module (such as HC-05, HC-06):
 
   ![](assets/images/module-jy-mcu.jpg)
 
@@ -98,12 +98,14 @@ Check out the [Johnny-Five Bluetooth Guide] for more information.
 
 #### Android Programing
 
-Update the [Transport URI](#transport) in your Android Application
+Update the [Transport URI](#transports) in your Android Application
 to let it know which device should be connected.
 
 For Bluetooth Connection, the URI can be either of:
 
 - `bt:<bluetooth_name>`
+
+  - **Make sure the Bluetooth device has been bonded before connecting**
 
 - `bt:<bluetooth_mac_address>`
 
@@ -111,15 +113,12 @@ For example:
 
 ````kotlin
 /**
- * if the name of your Bluetooth device is "HC-06", then the URI should be:
+ * If the name of your Bluetooth device is "HC-06", then the URI should be:
  *
  *   "bt://HC-06"
  */
 connectBoard("bt://HC-06".toTransport(), ...)
 ````
-
-> NOTICE: When using the Bluetooth device name, make sure the Bluetooth
-device has already been bonded with your Android phone.
 
 
 ### Connect via WiFi
@@ -141,7 +140,7 @@ StandardFirmataWiFi on the board.
 
 #### Update your Android Program
 
-For WiFi Connection, the [Transport URI](#transport) is:
+For WiFi Connection, the [Transport URI](#transports) is:
 
 - `tcp:<board_ip_address>:<board_port>`
 
@@ -159,7 +158,7 @@ connectBoard("tcp://192.168.4.1".toTransport(), ...)
 
 ## Documentation
 
-### Transport
+### Transports
 
 Android Firmata Library uses a Transport URI to identify how devices are
 being connected:
@@ -168,7 +167,7 @@ being connected:
 
     - `bt:<bluetooth_name>`
 
-      - Make sure the Bluetooth device has been bonded before connecting.
+      - **Make sure the Bluetooth device has been bonded before connecting**
 
     - `bt:<bluetooth_mac_address>`
 
@@ -190,8 +189,8 @@ being connected:
 
 ## TODOs
 
-- [ ] Support USB connection (USBTransport)
-- [ ] Support BLE connection (BLETransport)
+- [ ] Support USB transport
+- [ ] Support BLE transport
 
 
 ## License
