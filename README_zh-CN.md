@@ -172,6 +172,8 @@ Android-Firmata 使用 Transport URI 来指定 Android 和 Arduino 的通信方�
 
 ![](assets/images/sample-app.jpg)
 
+> 示例应用中的图片取自 [Johnny-Five Examples Page]
+
 
 ### 用法:
 
@@ -184,8 +186,6 @@ Android-Firmata 使用 Transport URI 来指定 Android 和 Arduino 的通信方�
 - 点击 "Connect/Disconnect" 按钮来连接/断开开发板
 
 - 如果需要修改 [Transport URI](#transports), 请在首页中打开 "Settings" 菜单, 选择  "Transport"
-
-> 示例图片来自 [Johnny-Five Examples Page]
 
 
 [Johnny-Five]: https://github.com/rwaldron/johnny-five

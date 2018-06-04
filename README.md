@@ -187,6 +187,8 @@ peripheral devices with Android-Firmata.
 
 ![](assets/images/sample-app.jpg)
 
+> **Note: Images in the sample application are copied from [Johnny-Five Examples Page].**
+
 
 ### Usage
 
@@ -199,8 +201,6 @@ peripheral devices with Android-Firmata.
 - Click the "Connect/Disconnect" button in the top right corner to connect your board
 
 - To edit the [Transport URI](#transports), open the "Settings Menu" in the Home Page, select "Transport"
-
-> **Note: Images in the sample application are copied from [Johnny-Five Examples Page].**
 
 
 ## TODOs
