@@ -70,9 +70,9 @@ in which way your Android Device and the Arduino Board being connected.
 
 Currently, these communication modes are supported:
 
-- [Connect via Bluetooth](#Connect-via-Bluetooth)
+- [Connect via Bluetooth](#connect-via-bluetooth)
 
-- [Connect via WiFi](#Connect-via-WiFi)
+- [Connect via WiFi](#connect-via-wifi)
 
 
 ### Connect via Bluetooth
@@ -98,7 +98,7 @@ Check out the [Johnny-Five Bluetooth Guide] for more information.
 
 #### Android Programing
 
-Update the [Transport URI](#Transport) in your Android Application
+Update the [Transport URI](#transport) in your Android Application
 to let it know which device should be connected.
 
 For Bluetooth Connection, the URI can be either of:
@@ -141,7 +141,7 @@ StandardFirmataWiFi on the board.
 
 #### Update your Android Program
 
-For WiFi Connection, the [Transport URI](#Transport) is:
+For WiFi Connection, the [Transport URI](#transport) is:
 
 - `tcp:<board_ip_address>:<board_port>`
 
