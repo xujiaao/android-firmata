@@ -109,7 +109,7 @@ For Bluetooth Connection, the URI can be either of:
 
 For example:
 
-````
+````kotlin
 /**
  * if the name of your Bluetooth device is "HC-06", then the URI should be:
  *
@@ -147,7 +147,7 @@ For WiFi Connection, the [Transport URI](#transport) is:
 
 For example:
 
-````
+````kotlin
 /**
  * If the ip address is '192.168.4.1', and the port is '3030', then the URI should be:
  *
