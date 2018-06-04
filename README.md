@@ -64,6 +64,8 @@ class GetStartedActivity : AppCompatActivity() {
 
 ![](assets/images/led-blink.gif)
 
+> Note: `led-blink.gif` is copied from [Johnny-Five] home page.
+
 
 ## Guidance
 
