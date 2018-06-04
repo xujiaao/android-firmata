@@ -87,7 +87,7 @@ Currently, these communication modes are supported:
 
 - A Bluetooth Serial Port Module (such as HC-05, HC-06):
 
-  ![](assets/images/module-jy-mcu.jpg)
+  ![](assets/images/jy-mcu.jpg)
 
 
 #### Setup the Bluetooth Serial Port Module
@@ -132,6 +132,8 @@ connectBoard("bt://HC-06".toTransport(), ...)
   - Arduino IDE > Examples > Firmata > StandardFirmata**WiFi**
 
 - A [NodeMcu] (ESP8266) Board
+
+  ![](assets/images/nodemcu.jpg)
 
 
 #### Setup NodeMcu
