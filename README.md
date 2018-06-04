@@ -184,13 +184,25 @@ being connected:
 
 ## Sample Application (:link: [Link](https://github.com/xujiaao/android-firmata/releases/latest))
 
-> **Note: Images in the sample application are copied from [Johnny-Five Examples Page].**
+Android-Firmata provides a Sample Application, it shows how to control
+peripheral devices with Android-Firmata.
 
 ![](assets/images/sample-app.jpg)
 
-- To edit the Transport URI, open the Settings Menu, select: Transport
 
-- To Connect/Disconnect the board, click the action button in the top right corner
+### Usage
+
+- [Download](https://github.com/xujiaao/android-firmata/releases/latest) and installed the Sample Application on your Android Device.
+
+- Select a smaple in the Home Page
+
+- Follow the breadboard image in the Sample Page for wiring
+
+- Click the "Connect/Disconnect" button in the top right corner to connect your board
+
+- To edit the [Transport URI](#transports), open the "Settings Menu" in the Home Page, select "Transport"
+
+> **Note: Images in the sample application are copied from [Johnny-Five Examples Page].**
 
 
 ## TODOs

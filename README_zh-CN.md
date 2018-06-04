@@ -170,11 +170,24 @@ Android-Firmata 使用 Transport URI 来指定 Android 和 Arduino 的通信方�
 
 ## 示例应用 (:link: [下载链接](https://github.com/xujiaao/android-firmata/releases/latest))
 
+示例应用中展示了如何通过 Android-Firmata 操控物理设备.
+
 ![](assets/images/sample-app.jpg)
 
-- 更改 Transport URI, 请点击 Settings 菜单中的 Transport 选项
 
-- 连接/断开设备, 请点击右上角的 Connect/Disconnect 按钮
+### 用法:
+
+- [下载](https://github.com/xujiaao/android-firmata/releases/latest) 并安装示例应用
+
+- 选择一个示例
+
+- 按照示例图片进行接线
+
+- 点击 "Connect/Disconnect" 按钮来连接/断开开发板
+
+- 如果需要修改 [Transport URI](#transports), 请在首页中打开 "Settings" 菜单, 选择  "Transport"
+
+> 示例图片来自 [Johnny-Five Examples Page]
 
 
 [Johnny-Five]: https://github.com/rwaldron/johnny-five
