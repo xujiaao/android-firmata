@@ -26,7 +26,9 @@ dependencies {
 
 ## Get Started
 
-This piece of code shows how to "Blink an LED" with Android-Firmata:
+The ubiquitous "Hello World" program of the microcontroller is
+"Blink an LED". The following code demonstrates how this is done
+using the Android-Firmata Library.
 
 ````kotlin
 class GetStartedActivity : AppCompatActivity() {
@@ -65,7 +67,7 @@ class GetStartedActivity : AppCompatActivity() {
 
 ## Guidance
 
-Before programing with the Android Firmata Library, you need to select
+Before programing with the Android-Firmata Library, you need to select
 in which way your Android Device and the Arduino Board being connected.
 
 Currently, these communication modes are supported:
@@ -91,7 +93,7 @@ Currently, these communication modes are supported:
 #### Setup the Bluetooth Serial Port Module
 
 Since Firmata runs at `57600` baud, you'll need to configure the module
-before making a connection with Android Firmata.
+before making a connection with Android-Firmata.
 
 Check out the [Johnny-Five Bluetooth Guide] for more information.
 
@@ -138,7 +140,7 @@ Check out the [NodeMcu Guide] to learn about how to install
 StandardFirmataWiFi on the board.
 
 
-#### Update your Android Program
+#### Android Programing
 
 For WiFi Connection, the [Transport URI](#transports) is:
 
@@ -160,7 +162,7 @@ connectBoard("tcp://192.168.4.1".toTransport(), ...)
 
 ### Transports
 
-Android Firmata Library uses a Transport URI to identify how devices are
+Android-Firmata Library uses a Transport URI to identify how devices are
 being connected:
 
 - Bluetooth:
