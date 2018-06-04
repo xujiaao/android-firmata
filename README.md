@@ -85,7 +85,7 @@ Currently, these communication modes are supported:
 
 - A Bluetooth Serial Port Module
 
-  ![](module-jy-mcu.jpg)
+  ![](assets/images/module-jy-mcu.jpg)
 
 
 #### Setup the Bluetooth Serial Port Module
