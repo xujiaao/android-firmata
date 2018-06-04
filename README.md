@@ -107,11 +107,11 @@ to let it know which device should be connected.
 
 For Bluetooth Connection, the URI can be either of:
 
-- `bt:<bluetooth_name>` (Match the Bluetooth Name)
+- `bt:<bluetooth_name>` *(Matches the Bluetooth Name)*
 
   - **Make sure the Bluetooth device has been bonded before connecting**
 
-- `bt:<bluetooth_mac_address>` (Match the Bluetooth Mac Address)
+- `bt:<bluetooth_mac_address>` *(Matches the Bluetooth Mac Address)*
 
 For example:
 
@@ -171,15 +171,13 @@ being connected:
 
 - Bluetooth:
 
-    - `bt:<bluetooth_name>`
+    - `bt:<bluetooth_name>` *(Matches the Bluetooth Name)*
 
       - **Make sure the Bluetooth device has been bonded before connecting**
 
-    - `bt:<bluetooth_mac_address>`
+    - `bt:<bluetooth_mac_address>` *(Matches the Bluetooth Mac Address)*
 
-- WiFi:
-
-    - `tcp:<board_ip_address>:<board_port>`
+- WiFi: `tcp:<board_ip_address>:<board_port>`
 
 
 ## Sample Application (:link: [Link](https://github.com/xujiaao/android-firmata/releases/latest))

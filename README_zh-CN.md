@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/xujiaao/android-firmata.svg?branch=master)](https://travis-ci.org/xujiaao/android-firmata)
 [![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
 
-基于 [Firmata] 协议的 Android 物联网开发库 (Android 版 [Johnny-Five] :trollface:), 使用 **Kotlin** 编写.
+基于 [Firmata] 协议的 Android 物联网开发库 *(Android 版 [Johnny-Five] :trollface:)*, 使用 **Kotlin** 编写.
 
 它允许您在 Android 应用中控制安装了 Firmata 协议的 **Arduino** 开发板.
 
@@ -95,11 +95,11 @@ class GetStartedActivity : AppCompatActivity() {
 
 可以使用下面两种 URI 进行蓝牙连接:
 
-- `bt:<bluetooth_name>` (使用蓝牙名称进行匹配)
+- `bt:<bluetooth_name>` *(使用蓝牙名称进行匹配)*
 
   - **使用蓝牙名称连接时, 请确保蓝牙设备已和您的手机配对**
 
-- `bt:<bluetooth_mac_address>` (使用 Mac 地址进行匹配)
+- `bt:<bluetooth_mac_address>` *(使用 Mac 地址进行匹配)*
 
 示例:
 
@@ -157,15 +157,13 @@ Android-Firmata 使用 Transport URI 来指定 Android 和 Arduino 的通信方�
 
 - Bluetooth:
 
-    - `bt:<bluetooth_name>`
+    - `bt:<bluetooth_name>` *(使用蓝牙名称进行匹配)*
 
       - **使用蓝牙名称连接时, 请确保蓝牙设备已和您的手机配对**
 
-    - `bt:<bluetooth_mac_address>`
+    - `bt:<bluetooth_mac_address>` *(使用 Mac 地址进行匹配)*
 
-- WiFi:
-
-    - `tcp:<board_ip_address>:<board_port>`
+- WiFi: `tcp:<board_ip_address>:<board_port>`
 
 
 ## 示例应用 (:link: [下载链接](https://github.com/xujiaao/android-firmata/releases/latest))
