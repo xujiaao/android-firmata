@@ -3,9 +3,9 @@
 [![Build Status](https://travis-ci.org/xujiaao/android-firmata.svg?branch=master)](https://travis-ci.org/xujiaao/android-firmata)
 [![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
 
-**基于 [Firmata] 协议的 Android 物联网开发库 (Android 版 [Johnny-Five] :trollface:)**
-
-Android-Firmata 使用 **Kotlin** 编写. 它允许您在 Android 应用中控制安装了 Firmata 协议的 Arduino 开发板.
+基于 [Firmata] 协议的 Android 物联网开发库 (Android 版 [Johnny-Five] :trollface:),
+使用 **Kotlin** 编写. 它允许您在 Android 应用中控制安装了 Firmata 协议的
+**Arduino** 开发板.
 
 
 ## 依赖
@@ -62,8 +62,7 @@ class GetStartedActivity : AppCompatActivity() {
 
 ## Guidance
 
-在使用 Android-Firmata 开发前, 您需要选择通过何种方式将 Android 和 Arduino
-设备间的连接起来. 目前支持以下连接方式:
+在使用 Android-Firmata 开发前, 您需要选择 Android 和 Arduino 设备间的连接方式:
 
 - [通过蓝牙连接](#connect-via-bluetooth)
 
