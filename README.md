@@ -11,6 +11,19 @@ It allows controlling Arduino (or other boards, such as [NodeMcu]...)
 which runs Firmata Protocol from your Android Application.
 
 
+## Installation
+
+In your build.gradle:
+
+````
+dependencies {
+    implementation 'com.xujiaao.android:android-firmata:${android_firmata_version}'
+}
+````
+
+[![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
+
+
 ## Get Started
 
 This piece of code shows how to "Blink an LED" with Android-Firmata:
@@ -50,42 +63,118 @@ class GetStartedActivity : AppCompatActivity() {
 ![](assets/images/led-blink.gif)
 
 
-## Setup Bluetooth Device
+## Guidance
 
-Check out the [Johnny-Five Bluetooth Guide] to setup your Bluetooth Serial Port Module.
+Before programing with the Android Firmata Library, you need to select
+in which way your Android Device and the Arduino Board being connected.
 
+Currently, these communication modes are supported:
 
-## Setup Arduino
+- [Connect via Bluetooth](#Connect-via-Bluetooth)
 
-- Download Arduino IDE
-
-- Plug in your Arduino or Arduino compatible microcontroller via USB
-
-- Open the Arduino IDE, select: File > Examples > Firmata > StandardFirmataPlus
-
-  - StandardFirmataPlus is available in Firmata v2.5.0 or greater
-
-- Click the "Upload" button
-
-If the upload was successful, the board is now prepared and you can close the Arduino IDE.
+- [Connect via WiFi](#Connect-via-WiFi)
 
 
-## Setup NodeMcu (ESP8266)
+### Connect via Bluetooth
 
-If you have a NodeMcu board, and want to control it through WiFi, please check out the [NodeMcu Guide].
+#### Requirements
+
+- StandardFirmataPlus v2.5.0 or greater
+
+  - Arduino IDE > Examples > Firmata > StandardFirmataPlus
+
+- A Bluetooth Serial Port Module
+
+  ![](module-jy-mcu.jpg)
 
 
-## Installation
+#### Setup the Bluetooth Serial Port Module
 
-In your build.gradle:
+Since Firmata runs at `57600` baud, you'll need to configure the module
+before making a connection with Android Firmata.
+
+Check out the [Johnny-Five Bluetooth Guide] for more information.
+
+
+#### Android Programing
+
+Update the [Transport URI](#Transport) in your Android Application
+to let it know which device should be connected.
+
+For Bluetooth Connection, the URI can be either of:
+
+- `bt:<bluetooth_name>`
+
+- `bt:<bluetooth_mac_address>`
+
+For example:
 
 ````
-dependencies {
-    implementation 'com.xujiaao.android:android-firmata:${android_firmata_version}'
-}
+/**
+ * if the name of your Bluetooth device is "HC-06", then the URI should be:
+ *
+ *   "bt://HC-06"
+ */
+connectBoard("bt://HC-06".toTransport(), ...)
 ````
 
-[![Download](https://api.bintray.com/packages/xujiaao/android/android-firmata/images/download.svg)](https://bintray.com/xujiaao/android/android-firmata/_latestVersion)
+> NOTICE: When using the Bluetooth device name, make sure the Bluetooth
+device has already been bonded with your Android phone.
+
+
+### Connect via WiFi
+
+#### Requirements
+
+- StandardFirmata**WiFi** v2.5.0 or greater
+
+  - Arduino IDE > Examples > Firmata > StandardFirmata**WiFi**
+
+- A [NodeMcu] (ESP8266) Board
+
+
+#### Setup NodeMcu
+
+Check out the [NodeMcu Guide] to learn about how to install
+StandardFirmataWiFi on the board.
+
+
+#### Update your Android Program
+
+For WiFi Connection, the [Transport URI](#Transport) is:
+
+- `tcp:<board_ip_address>:<board_port>`
+
+For example:
+
+````
+/**
+ * If the ip address is '192.168.4.1', and the port is '3030', then the URI should be:
+ *
+ *   "tcp://192.168.4.1"
+ */
+connectBoard("tcp://192.168.4.1".toTransport(), ...)
+````
+
+
+## Documentation
+
+### Transport
+
+Android Firmata Library uses a Transport URI to identify how devices are
+being connected:
+
+- Bluetooth:
+
+    - `bt:<bluetooth_name>`
+
+      - Make sure the Bluetooth device has been bonded before connecting.
+
+    - `bt:<bluetooth_mac_address>`
+
+- WiFi:
+
+    - `tcp:<board_ip_address>:<board_port>`
 
 
 ## Sample Application (:link: [Link](https://github.com/xujiaao/android-firmata/releases/latest))
@@ -97,6 +186,12 @@ dependencies {
 - To edit the Transport URI, open the Settings Menu, select: Transport
 
 - To Connect/Disconnect the board, click the action button in the top right corner
+
+
+## TODOs
+
+- [ ] Support USB connection (USBTransport)
+- [ ] Support BLE connection (BLETransport)
 
 
 ## License
