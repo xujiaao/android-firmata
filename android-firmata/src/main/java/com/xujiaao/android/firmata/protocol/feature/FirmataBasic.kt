@@ -65,7 +65,7 @@ class VersionReport(data: ByteArray) : FirmataMessage {
 fun Firmata.sendSystemResetRequest() = sendRequest(SYSTEM_RESET_REQUEST)
 
 private val SYSTEM_RESET_REQUEST = byteArrayOf(
-    MIDI_REPORT_VERSION
+    MIDI_SYSTEM_RESET
 )
 
 // -------------------------------------------------------------------------------------------------
