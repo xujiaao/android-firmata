@@ -86,7 +86,7 @@ abstract class SampleActivity : AppCompatActivity() {
         fun connect() {
             val transportUri = getPreferredTransport()
             val transport = try {
-                transportUri.toTransport()
+                transportUri.toTransport(this@SampleActivity)
             } catch (e: IllegalArgumentException) {
                 alert(
                     Appcompat,

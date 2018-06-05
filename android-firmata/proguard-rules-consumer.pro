@@ -1,0 +1,1 @@
+-keep public class * extends com.xujiaao.android.firmata.transport.TransportProvider

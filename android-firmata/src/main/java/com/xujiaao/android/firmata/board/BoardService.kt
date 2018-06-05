@@ -9,9 +9,7 @@ import com.xujiaao.android.firmata.protocol.Firmata
 import com.xujiaao.android.firmata.protocol.FirmataMessage
 import com.xujiaao.android.firmata.protocol.feature.*
 import com.xujiaao.android.firmata.transport.Transport
-import java.io.Closeable
-import java.io.EOFException
-import java.io.IOException
+import java.io.*
 
 interface BoardService {
 
@@ -58,7 +56,7 @@ class DefaultBoardService(
     }
 
     private var mBoard: Board? = null
-    private var mStarted = false
+    private var mConnection: Transport.Connection? = null
 
     private var mWriterThread: WriterThread? = null
     private var mReaderThread: ReaderThread? = null
@@ -72,30 +70,29 @@ class DefaultBoardService(
     override fun isConnected(): Boolean = mBoard != null
 
     override fun connect() = ensureLooperThread("connect") {
-        if (!mStarted) {
+        if (mConnection == null) {
             connectInternal()
         }
     }
 
     private fun connectInternal() {
-        mStarted = true
+        val connection = transport.openConnection()
+        mConnection = connection
 
         mConnectorThread = ConnectorThread(
-            transport = transport,
+            connection = connection,
             onConnected = ::onTransportConnected,
             onError = ::onError
         )
     }
 
     override fun disconnect() = ensureLooperThread("disconnectInternal") {
-        if (mStarted) {
+        if (mConnection != null) {
             disconnectInternal(null)
         }
     }
 
     private fun disconnectInternal(error: Throwable?) {
-        mStarted = false
-
         mBoard?.close()
         mBoard = null
 
@@ -116,7 +113,8 @@ class DefaultBoardService(
         mBoardHeartbeats?.close()
         mBoardHeartbeats = null
 
-        transport.disconnect()
+        mConnection?.close()
+        mConnection = null
 
         collectOnConnectionChangeListeners()?.forEach {
             it.onDisconnected(this, error)
@@ -143,21 +141,21 @@ class DefaultBoardService(
     // Events
     // ---------------------------------------------------------------------------------------------
 
-    private fun onTransportConnected() {
+    private fun onTransportConnected(inputStream: InputStream, outputStream: OutputStream) {
         mConnectorThread?.close()
         mConnectorThread = null
 
         synchronized(mWriteLock) {
             mWriterThread?.close()
             mWriterThread = WriterThread(
-                transport = transport,
+                outputStream = outputStream,
                 onError = ::onError
             )
         }
 
         mReaderThread?.close()
         mReaderThread = ReaderThread(
-            transport = transport,
+            inputStream = inputStream,
             firmata = mFirmata,
             onError = ::onError
         )
@@ -246,8 +244,8 @@ private class BackgroundThreadDelegate(
 }
 
 private class ConnectorThread(
-    private val transport: Transport,
-    private val onConnected: () -> Unit,
+    private val connection: Transport.Connection,
+    private val onConnected: (inputStream: InputStream, outputStream: OutputStream) -> Unit,
     private val onError: (error: Throwable) -> Unit
 ) : Thread("board-connector"), Closeable {
 
@@ -258,17 +256,21 @@ private class ConnectorThread(
     }
 
     override fun run() {
+        var inputStream: InputStream? = null
+        var outputStream: OutputStream? = null
         var error: Throwable? = null
 
         try {
-            transport.connect()
+            connection.connect()
+            inputStream = connection.getInputStream()
+            outputStream = connection.getOutputStream()
         } catch (e: IOException) {
             error = e
         }
 
         mDelegate.post {
             if (error == null) {
-                onConnected()
+                onConnected(inputStream!!, outputStream!!)
             } else {
                 onError(error)
             }
@@ -284,7 +286,7 @@ private class ConnectorThread(
 private const val WRITER_MSG_DATA = 1
 
 private class WriterThread(
-    private val transport: Transport,
+    private val outputStream: OutputStream,
     private val onError: (error: Throwable) -> Unit
 ) : HandlerThread("board-writer"), Closeable {
 
@@ -319,7 +321,8 @@ private class WriterThread(
         var error: Throwable? = null
 
         try {
-            transport.write(data)
+            outputStream.write(data)
+            outputStream.flush()
         } catch (e: IOException) {
             error = e
         }
@@ -342,7 +345,7 @@ private class WriterThread(
 private const val READER_MSG_FIRMATA = 1
 
 private class ReaderThread(
-    private val transport: Transport,
+    private val inputStream: InputStream,
     private val firmata: Firmata,
     private val onError: (error: Throwable) -> Unit
 ) : Thread("board-reader"), Closeable {
@@ -369,7 +372,7 @@ private class ReaderThread(
             var error: Throwable? = null
 
             try {
-                byte = transport.read()
+                byte = inputStream.read()
             } catch (e: IOException) {
                 error = e
             }

@@ -3,4 +3,31 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <application>
+
+        <!-- *********************************************************************************** -->
+        <!-- Transport Provider (Network) -->
+        <!-- *********************************************************************************** -->
+
+        <meta-data
+            android:name="com.xujiaao.android.firmata.transport.provider.TCP"
+            android:value="com.xujiaao.android.firmata.transport.network.NetworkTransportProvider" />
+
+        <meta-data
+            android:name="com.xujiaao.android.firmata.transport.provider.WIFI"
+            android:value="com.xujiaao.android.firmata.transport.network.NetworkTransportProvider" />
+
+        <!-- *********************************************************************************** -->
+        <!-- Transport Provider (Bluetooth) -->
+        <!-- *********************************************************************************** -->
+
+        <meta-data
+            android:name="com.xujiaao.android.firmata.transport.provider.BT"
+            android:value="com.xujiaao.android.firmata.transport.bluetooth.BluetoothTransportProvider" />
+
+        <meta-data
+            android:name="com.xujiaao.android.firmata.transport.provider.BLUETOOTH"
+            android:value="com.xujiaao.android.firmata.transport.bluetooth.BluetoothTransportProvider" />
+    </application>
 </manifest>

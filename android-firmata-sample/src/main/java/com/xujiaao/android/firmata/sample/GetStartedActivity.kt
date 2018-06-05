@@ -18,7 +18,7 @@ class GetStartedActivity : AppCompatActivity() {
          * NOTICE: make sure the name of Bluetooth device is "HC-06",
          * and the device has already been bonded with your Android phone!!!
          */
-        connectBoardWithLifecycle("bt://HC-06".toTransport(), lifecycle, {
+        connectBoardWithLifecycle("bt://HC-06".toTransport(this), lifecycle, {
             onConnecting { toast("Connecting...") }
 
             onConnected { board ->
