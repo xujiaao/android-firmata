@@ -42,6 +42,8 @@ class NetworkTransport(private val host: String, private val port: Int) : Transp
 
             if (closed) {
                 socket.close()
+
+                throw IOException("Transport connection is closed")
             }
         }
 

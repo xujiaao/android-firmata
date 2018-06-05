@@ -43,6 +43,8 @@ abstract class BluetoothTransport : Transport {
 
             if (closed) {
                 socket.close()
+
+                throw IOException("Transport connection is closed")
             }
         }
 
