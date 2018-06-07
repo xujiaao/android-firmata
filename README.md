@@ -6,7 +6,7 @@
 
 **IoT Library for Android Developers. Inspired by [Johnny-Five].**
 
-Android-Firmata is a client library of [Firmata] written in **Kotlin**.
+**Android-Firmata** is a client library of [Firmata] written in **Kotlin**.
 It allows controlling Arduino (or other boards, such as [NodeMcu]...)
 which runs Firmata Protocol from your Android Application.
 
