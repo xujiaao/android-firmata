@@ -56,7 +56,6 @@ abstract class BluetoothTransport : Transport {
         override fun write(data: ByteArray) =
             mOutputStream?.run {
                 write(data)
-                flush()
             } ?: throw IOException("Transport connection is closed")
 
         @Throws(IOException::class)
