@@ -17,7 +17,7 @@ which runs Firmata Protocol from your Android Application.
 <sup>**:see_no_evil: WALL·E and my GUINEA PIG :hear_no_evil:**</sup>
 
 
-## Benefits
+## *Benefits*
 
 - *Easy Peripherals with [Kotlin Programming Language](https://kotlinlang.org)*
 
