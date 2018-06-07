@@ -12,16 +12,16 @@ which runs Firmata Protocol from your Android Application.
 
 ![](assets/images/wall-e.gif)
 
-<sup>:see_no_evil: WALL·E and my Guinea Pig</sup>
+:see_no_evil: WALL·E and my Guinea Pig
 
 
-## Benefit
+## Benefits
 
-- Easy Peripherals with [Kotlin Programming Language](https://kotlinlang.org)
+- *Easy Peripherals with [Kotlin Programming Language](https://kotlinlang.org)*
 
-- Easy Remote Controling with Android UI Components
+- *Easy Remote Controling with Android UI Components*
 
-- Easy Animation with [Android Animator Api](https://developer.android.com/guide/topics/graphics/prop-animation)
+- *Easy Animation with [Android Animator Api](https://developer.android.com/guide/topics/graphics/prop-animation)*
 
 ## Installation
 
