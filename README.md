@@ -19,11 +19,11 @@ which runs Firmata Protocol from your Android Application.
 
 ## Benefits
 
-- [x] *Easy Peripherals with [Kotlin Programming Language](https://kotlinlang.org)*
+- *Easy Peripherals with [Kotlin Programming Language](https://kotlinlang.org)*
 
-- [x] *Easy Remote Controling with Android UI Components*
+- *Easy Remote Controling with Android UI Components*
 
-- [x] *Easy Animation with [Android Animator Api](https://developer.android.com/guide/topics/graphics/prop-animation)*
+- *Easy Animation with [Android Animator Api](https://developer.android.com/guide/topics/graphics/prop-animation)*
 
 
 ## Installation
