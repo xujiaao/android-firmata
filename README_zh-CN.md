@@ -101,6 +101,8 @@ class GetStartedActivity : AppCompatActivity() {
 
 - `bt:<bluetooth_mac_address>` *(使用 Mac 地址进行匹配)*
 
+  - **请使用 `.` 或 `-` 替换 Mac 地址中的 `:` 分隔符 (比如: `bt://00.11.22.33.44.55`)**
+
 示例:
 
 ````kotlin
@@ -162,6 +164,8 @@ Android-Firmata 使用 Transport URI 来指定 Android 和 Arduino 的通信方�
     - **使用蓝牙名称连接时, 请确保蓝牙设备已和您的手机配对**
 
   - `bt:<bluetooth_mac_address>` *(使用 Mac 地址进行匹配)*
+
+    - **请使用 `.` 或 `-` 替换 Mac 地址中的 `:` 分隔符 (比如: `bt://00.11.22.33.44.55`)**
 
 - WiFi:
 

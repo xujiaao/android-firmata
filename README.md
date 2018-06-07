@@ -113,6 +113,8 @@ For Bluetooth Connection, the URI can be either of:
 
 - `bt:<bluetooth_mac_address>` *(Matches the Bluetooth Mac Address)*
 
+  - **Please replace the `:` in your Mac Address with `.` or `-` (e.g. `bt://00.11.22.33.44.55`)**
+
 For example:
 
 ````kotlin
@@ -176,6 +178,8 @@ being connected:
     - **Make sure the Bluetooth device has been bonded before connecting**
 
   - `bt:<bluetooth_mac_address>` *(Matches the Bluetooth Mac Address)*
+
+    - **Please replace the `:` in your Mac Address with `.` or `-` (e.g. `bt://00.11.22.33.44.55`)**
 
 - WiFi:
 
