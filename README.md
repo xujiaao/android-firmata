@@ -1,3 +1,8 @@
+![](assets/images/wall-e.gif)
+
+<sup>:see_no_evil: WALL·E and my Guinea Pig :hear_no_evil:</sup>
+
+
 # Android-Firmata
 
 [![Build Status](https://travis-ci.org/xujiaao/android-firmata.svg?branch=master)](https://travis-ci.org/xujiaao/android-firmata)
@@ -78,6 +83,8 @@ Currently, these communication modes are supported:
 
 - [Connect via WiFi](#connect-via-wifi)
 
+- [Connect via USB](#connect-via-usb)
+
 
 ### Connect via Bluetooth
 
@@ -123,7 +130,7 @@ For example:
  *
  *   "bt://HC-06"
  */
-connectBoard("bt://HC-06".toTransport(), ...)
+connectBoard("bt://HC-06".toTransport(context), ...)
 ````
 
 
@@ -160,8 +167,30 @@ For example:
  *
  *   "tcp://192.168.4.1"
  */
-connectBoard("tcp://192.168.4.1".toTransport(), ...)
+connectBoard("tcp://192.168.4.1".toTransport(context), ...)
 ````
+
+
+### Connect via USB
+
+#### Requirements
+
+- StandardFirmataPlus v2.5.0 or greater
+
+  - Arduino IDE > Examples > Firmata > StandardFirmataPlus
+
+- An Android Phone which supports OTG
+
+- An USB Host Cable
+
+  ![](assets/images/usb-host-cable.jpg)
+
+
+#### Android Programing
+
+For USB Connection, the [Transport URI](#transports) is: `usb`
+
+![](assets/images/usb-host-cable.jpg)
 
 
 ## Documentation

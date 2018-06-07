@@ -64,9 +64,11 @@ class GetStartedActivity : AppCompatActivity() {
 
 在使用 Android-Firmata 开发前, 您需要选择 Android 和 Arduino 设备间的连接方式:
 
-- [通过蓝牙连接](#connect-via-bluetooth)
+- [通过蓝牙连接](#通过蓝牙连接)
 
-- [通过 WiFi 连接](#connect-via-wifi)
+- [通过 WiFi 连接](#通过-wifi-连接)
+
+- [通过 USB 连接](#通过-usb-连接)
 
 
 ### 通过蓝牙连接
@@ -111,7 +113,7 @@ class GetStartedActivity : AppCompatActivity() {
  *
  *   "bt://HC-06"
  */
-connectBoard("bt://HC-06".toTransport(), ...)
+connectBoard("bt://HC-06".toTransport(context), ...)
 ````
 
 
@@ -147,8 +149,32 @@ connectBoard("bt://HC-06".toTransport(), ...)
  *
  *   "tcp://192.168.4.1"
  */
-connectBoard("tcp://192.168.4.1".toTransport(), ...)
+connectBoard("tcp://192.168.4.1".toTransport(context), ...)
 ````
+
+
+### 通过 USB 连接
+
+#### Requirements
+
+#### 准备
+
+- StandardFirmataPlus v2.5.0 或更高版本
+
+  - 打开 Arduino IDE > 示例 > Firmata > StandardFirmataPlus
+
+- 支持 OTG 的 Android 手机
+
+- USB Host 数据线
+
+  ![](assets/images/usb-host-cable.jpg)
+
+
+#### 修改代码
+
+使用 USB 连接时, [Transport URI](#transports) 为: `usb`
+
+![](assets/images/usb-host-cable.jpg)
 
 
 ## 文档
