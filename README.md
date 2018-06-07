@@ -211,7 +211,7 @@ peripheral devices with Android-Firmata.
 
 ## TODOs
 
-- [ ] Support USB transport
+- [x] Support USB transport
 - [ ] Support BLE transport
 
 
