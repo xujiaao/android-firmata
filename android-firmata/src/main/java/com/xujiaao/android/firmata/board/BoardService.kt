@@ -408,6 +408,7 @@ private class BoardInitializer(
         wrap {
             mVersionReport = it
 
+            // hack for usb transport. send requests after usb device being prepared...
             firmata.sendReportFirmwareRequest()
             firmata.sendCapabilityQueryRequest()
             firmata.sendAnalogMappingQueryRequest()

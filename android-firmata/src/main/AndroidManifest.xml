@@ -4,6 +4,10 @@
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-feature
+        android:name="android.hardware.usb.host"
+        android:required="false" />
+
     <application>
 
         <!-- *********************************************************************************** -->
@@ -29,5 +33,13 @@
         <meta-data
             android:name="com.xujiaao.android.firmata.transport.provider.BLUETOOTH"
             android:value="com.xujiaao.android.firmata.transport.bluetooth.BluetoothTransportProvider" />
+
+        <!-- *********************************************************************************** -->
+        <!-- Transport Provider (USB) -->
+        <!-- *********************************************************************************** -->
+
+        <meta-data
+            android:name="com.xujiaao.android.firmata.transport.provider.USB"
+            android:value="com.xujiaao.android.firmata.transport.usb.UsbTransportProvider" />
     </application>
 </manifest>

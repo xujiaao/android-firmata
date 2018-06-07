@@ -1,5 +1,7 @@
 package com.xujiaao.android.firmata.toolbox
 
+fun Byte.toUnsignedInt() = toInt() and 0xFF
+
 fun Int.map(src: IntRange, dst: IntRange): Int =
     map(src.first, src.last, dst.first, dst.last)
 
