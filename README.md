@@ -191,7 +191,7 @@ connectBoard("tcp://192.168.4.1".toTransport(context), ...)
 
 - An Android Phone which supports OTG
 
-- An [USB Host Cable]((https://www.adafruit.com/product/1099))
+- An [USB Host Cable](https://www.adafruit.com/product/1099)
 
   ![](assets/images/screenshot-usb.gif)
 
