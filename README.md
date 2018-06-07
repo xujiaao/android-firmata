@@ -204,9 +204,11 @@ connectBoard("tcp://192.168.4.1".toTransport(context), ...)
 
 #### Android Programing
 
-For USB Connection, the [Transport URI](#transports) is: `usb`
+For USB Connection, the [Transport URI](#transports) is:
 
-> Note: USB Transport is based on [UsbSerial Library](https://github.com/felHR85/UsbSerial)
+- `usb`
+
+> Note: USB Transport is based on [FelHR85's UsbSerial Library](https://github.com/felHR85/UsbSerial)
 
 
 ## Documentation
