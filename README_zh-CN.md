@@ -165,16 +165,14 @@ connectBoard("tcp://192.168.4.1".toTransport(context), ...)
 
 - 支持 OTG 的 Android 手机
 
-- USB Host 数据线
+- [OTG 连接线](https://www.adafruit.com/product/1099)
 
-  ![](assets/images/usb-host-cable.jpg)
+  ![](assets/images/screenshot-usb.gif)
 
 
 #### 修改代码
 
 使用 USB 连接时, [Transport URI](#transports) 为: `usb`
-
-![](assets/images/usb-host-cable.jpg)
 
 
 ## 文档
@@ -196,6 +194,10 @@ Android-Firmata 使用 Transport URI 来指定 Android 和 Arduino 的通信方�
 - WiFi:
 
   - `tcp:<board_ip_address>:<board_port>`
+
+- USB:
+
+  - `usb`
 
 
 ## 示例应用 (:link: [下载链接](https://github.com/xujiaao/android-firmata/releases/latest))

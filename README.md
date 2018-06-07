@@ -1,8 +1,3 @@
-![](assets/images/wall-e.gif)
-
-<sup>:see_no_evil: WALL·E and my Guinea Pig :hear_no_evil:</sup>
-
-
 # Android-Firmata
 
 [![Build Status](https://travis-ci.org/xujiaao/android-firmata.svg?branch=master)](https://travis-ci.org/xujiaao/android-firmata)
@@ -14,6 +9,19 @@
 Android-Firmata is a client library of [Firmata] written in **Kotlin**.
 It allows controlling Arduino (or other boards, such as [NodeMcu]...)
 which runs Firmata Protocol from your Android Application.
+
+
+#### Benefit
+
+- Easy Peripherals with [Kotlin Programming Language](https://kotlinlang.org)
+
+- Easy Remote Controling with Android UI Components
+
+- Easy Animation with [Android Animator Api](https://developer.android.com/guide/topics/graphics/prop-animation)
+
+![](assets/images/wall-e.gif)
+
+<sup>:see_no_evil: WALL·E and my Guinea Pig</sup>
 
 
 ## Installation
@@ -181,16 +189,14 @@ connectBoard("tcp://192.168.4.1".toTransport(context), ...)
 
 - An Android Phone which supports OTG
 
-- An USB Host Cable
+- An [USB Host Cable]((https://www.adafruit.com/product/1099))
 
-  ![](assets/images/usb-host-cable.jpg)
+  ![](assets/images/screenshot-usb.gif)
 
 
 #### Android Programing
 
 For USB Connection, the [Transport URI](#transports) is: `usb`
-
-![](assets/images/usb-host-cable.jpg)
 
 
 ## Documentation
@@ -213,6 +219,10 @@ being connected:
 - WiFi:
 
   - `tcp:<board_ip_address>:<board_port>`
+
+- USB:
+
+  - `usb`
 
 
 ## Sample Application (:link: [Link](https://github.com/xujiaao/android-firmata/releases/latest))
