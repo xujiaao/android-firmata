@@ -2,8 +2,6 @@ package com.xujiaao.android.firmata.transport
 
 import java.io.Closeable
 import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
 
 interface Transport {
 
@@ -15,10 +13,10 @@ interface Transport {
         fun connect()
 
         @Throws(IOException::class)
-        fun getInputStream(): InputStream
+        fun read(): Int
 
         @Throws(IOException::class)
-        fun getOutputStream(): OutputStream
+        fun write(data: ByteArray)
 
         @Throws(IOException::class)
         override fun close()

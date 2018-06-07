@@ -48,12 +48,15 @@ class NetworkTransport(private val host: String, private val port: Int) : Transp
         }
 
         @Throws(IOException::class)
-        override fun getInputStream(): InputStream =
-            mInputStream ?: throw IOException("Transport connection is closed")
+        override fun read(): Int =
+            mInputStream?.read() ?: throw IOException("Transport connection is closed")
 
         @Throws(IOException::class)
-        override fun getOutputStream(): OutputStream =
-            mOutputStream ?: throw IOException("Transport connection is closed")
+        override fun write(data: ByteArray) =
+            mOutputStream?.run {
+                write(data)
+                flush()
+            } ?: throw IOException("Transport connection is closed")
 
         @Throws(IOException::class)
         override fun close() {

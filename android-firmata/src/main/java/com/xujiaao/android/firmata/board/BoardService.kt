@@ -9,7 +9,9 @@ import com.xujiaao.android.firmata.protocol.Firmata
 import com.xujiaao.android.firmata.protocol.FirmataMessage
 import com.xujiaao.android.firmata.protocol.feature.*
 import com.xujiaao.android.firmata.transport.Transport
-import java.io.*
+import java.io.Closeable
+import java.io.EOFException
+import java.io.IOException
 
 interface BoardService {
 
@@ -37,7 +39,7 @@ interface BoardService {
 // Implementation (DefaultBoardService)
 // -------------------------------------------------------------------------------------------------
 
-private const val INITIALIZE_TIMEOUT = 5_000L
+private const val INITIALIZE_TIMEOUT = 10_000L
 
 private const val HEARTBEATS_TIMEOUT = 1000L
 private const val HEARTBEATS_REQUEST_DELAY = 500L
@@ -141,21 +143,21 @@ class DefaultBoardService(
     // Events
     // ---------------------------------------------------------------------------------------------
 
-    private fun onTransportConnected(inputStream: InputStream, outputStream: OutputStream) {
+    private fun onTransportConnected(connection: Transport.Connection) {
         mConnectorThread?.close()
         mConnectorThread = null
 
         synchronized(mWriteLock) {
             mWriterThread?.close()
             mWriterThread = WriterThread(
-                outputStream = outputStream,
+                connection = connection,
                 onError = ::onError
             )
         }
 
         mReaderThread?.close()
         mReaderThread = ReaderThread(
-            inputStream = inputStream,
+            connection = connection,
             firmata = mFirmata,
             onError = ::onError
         )
@@ -245,7 +247,7 @@ private class BackgroundThreadDelegate(
 
 private class ConnectorThread(
     private val connection: Transport.Connection,
-    private val onConnected: (inputStream: InputStream, outputStream: OutputStream) -> Unit,
+    private val onConnected: (connection: Transport.Connection) -> Unit,
     private val onError: (error: Throwable) -> Unit
 ) : Thread("board-connector"), Closeable {
 
@@ -256,21 +258,17 @@ private class ConnectorThread(
     }
 
     override fun run() {
-        var inputStream: InputStream? = null
-        var outputStream: OutputStream? = null
         var error: Throwable? = null
 
         try {
             connection.connect()
-            inputStream = connection.getInputStream()
-            outputStream = connection.getOutputStream()
         } catch (e: IOException) {
             error = e
         }
 
         mDelegate.post {
             if (error == null) {
-                onConnected(inputStream!!, outputStream!!)
+                onConnected(connection)
             } else {
                 onError(error)
             }
@@ -286,7 +284,7 @@ private class ConnectorThread(
 private const val WRITER_MSG_DATA = 1
 
 private class WriterThread(
-    private val outputStream: OutputStream,
+    private val connection: Transport.Connection,
     private val onError: (error: Throwable) -> Unit
 ) : HandlerThread("board-writer"), Closeable {
 
@@ -321,8 +319,7 @@ private class WriterThread(
         var error: Throwable? = null
 
         try {
-            outputStream.write(data)
-            outputStream.flush()
+            connection.write(data)
         } catch (e: IOException) {
             error = e
         }
@@ -345,7 +342,7 @@ private class WriterThread(
 private const val READER_MSG_FIRMATA = 1
 
 private class ReaderThread(
-    private val inputStream: InputStream,
+    private val connection: Transport.Connection,
     private val firmata: Firmata,
     private val onError: (error: Throwable) -> Unit
 ) : Thread("board-reader"), Closeable {
@@ -372,7 +369,7 @@ private class ReaderThread(
             var error: Throwable? = null
 
             try {
-                byte = inputStream.read()
+                byte = connection.read()
             } catch (e: IOException) {
                 error = e
             }
@@ -408,7 +405,13 @@ private class BoardInitializer(
     private var mAnalogMappingResponse: AnalogMappingResponse? = null
 
     private val mVersionReportReceiver: VersionReportReceiver =
-        wrap { mVersionReport = it }
+        wrap {
+            mVersionReport = it
+
+            firmata.sendReportFirmwareRequest()
+            firmata.sendCapabilityQueryRequest()
+            firmata.sendAnalogMappingQueryRequest()
+        }
 
     private val mFirmwareReportReceiver: FirmwareReportReceiver =
         wrap { mFirmwareReport = it }
@@ -433,9 +436,6 @@ private class BoardInitializer(
 
         firmata.sendSystemResetRequest() // reset board.
         firmata.sendReportVersionRequest()
-        firmata.sendReportFirmwareRequest()
-        firmata.sendCapabilityQueryRequest()
-        firmata.sendAnalogMappingQueryRequest()
 
         mHandler.postDelayed(mTimeoutRunnable, INITIALIZE_TIMEOUT)
     }
