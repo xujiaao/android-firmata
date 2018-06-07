@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.xujiaao.android.firmata.board.connectBoardWithLifecycle
 import com.xujiaao.android.firmata.board.driver.Led
-import com.xujiaao.android.firmata.transport.toTransport
 import org.jetbrains.anko.toast
 
 class GetStartedActivity : AppCompatActivity() {
@@ -18,7 +17,7 @@ class GetStartedActivity : AppCompatActivity() {
          * NOTICE: make sure the name of Bluetooth device is "HC-06",
          * and the device has already been bonded with your Android phone!!!
          */
-        connectBoardWithLifecycle("bt://HC-06".toTransport(this), lifecycle, {
+        connectBoardWithLifecycle(this, "bt://HC-06", lifecycle, {
             onConnecting { toast("Connecting...") }
 
             onConnected { board ->

@@ -3,6 +3,7 @@ package com.xujiaao.android.firmata.board
 import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
 import android.arch.lifecycle.OnLifecycleEvent
+import android.content.Context
 import android.os.Looper
 import com.xujiaao.android.firmata.transport.Transport
 
@@ -15,13 +16,22 @@ interface BoardConnection {
     fun onBoardDisconnected(error: Throwable?)
 }
 
-fun BoardConnection.isConnecting() = isBoardConnecting(this)
+fun BoardConnection.isConnecting() =
+    isBoardConnecting(this)
 
-fun BoardConnection.isConnected() = isBoardConnected(this)
+fun BoardConnection.isConnected() =
+    isBoardConnected(this)
 
-fun BoardConnection.connect(transport: Transport) = connectBoard(transport, this)
+@Suppress("unused")
+@Throws(IllegalArgumentException::class)
+fun BoardConnection.connect(context: Context, transport: String) =
+    connectBoard(context, transport, this)
 
-fun BoardConnection.disconnect() = disconnectBoard(this)
+fun BoardConnection.connect(transport: Transport) =
+    connectBoard(transport, this)
+
+fun BoardConnection.disconnect() =
+    disconnectBoard(this)
 
 // -------------------------------------------------------------------------------------------------
 // Convenient (Basic)
@@ -38,6 +48,12 @@ fun isBoardConnecting(connection: BoardConnection): Boolean {
 fun isBoardConnected(connection: BoardConnection): Boolean {
     return getBoardService(connection)?.isConnected() ?: false
 }
+
+fun connectBoard(
+    context: Context,
+    transport: String,
+    connection: BoardConnection
+): BoardConnection = connectBoard(Transport(context, transport), connection)
 
 fun connectBoard(transport: Transport, connection: BoardConnection): BoardConnection {
     val service = DefaultBoardService(Looper.myLooper(), transport).apply {
@@ -85,6 +101,13 @@ private fun getBoardService(connection: BoardConnection) =
 // Convenient (Spec)
 // -------------------------------------------------------------------------------------------------
 
+@Suppress("unused")
+fun connectBoard(
+    context: Context,
+    transport: String,
+    init: BoardConnectionSpec.() -> Unit
+): BoardConnection = connectBoard(Transport(context, transport), init)
+
 fun connectBoard(transport: Transport, init: BoardConnectionSpec.() -> Unit): BoardConnection =
     connectBoard(transport, BoardConnectionSpec().apply(init))
 
@@ -124,6 +147,13 @@ class BoardConnectionSpec internal constructor() : BoardConnection {
 // -------------------------------------------------------------------------------------------------
 // Convenient (Lifecycle)
 // -------------------------------------------------------------------------------------------------
+
+fun connectBoardWithLifecycle(
+    context: Context,
+    transport: String,
+    lifecycle: Lifecycle,
+    init: BoardConnectionSpec.() -> Unit
+): BoardConnection = connectBoardWithLifecycle(Transport(context, transport), lifecycle, init)
 
 fun connectBoardWithLifecycle(
     transport: Transport,

@@ -14,9 +14,6 @@ interface TransportProvider {
     fun getTransport(context: Context, uri: Uri): Transport
 }
 
-fun String.toTransport(context: Context): Transport =
-    DefaultTransportProvider.getTransport(context, this)
-
 object DefaultTransportProvider : TransportProvider {
 
     private const val PROVIDER_PREFIX = "com.xujiaao.android.firmata.transport.provider"
