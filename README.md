@@ -10,11 +10,13 @@ Android-Firmata is a client library of [Firmata] written in **Kotlin**.
 It allows controlling Arduino (or other boards, such as [NodeMcu]...)
 which runs Firmata Protocol from your Android Application.
 
-<br/>
+<p>
 
 ![](assets/images/wall-e.gif)
 
-**:see_no_evil: WALL·E and my Guinea Pig :hear_no_evil:**
+<sup>**:see_no_evil: WALL·E and my Guinea Pig :hear_no_evil:**</sup>
+
+</p>
 
 
 ## Benefits
