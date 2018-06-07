@@ -14,9 +14,7 @@ which runs Firmata Protocol from your Android Application.
 
 ![](assets/images/wall-e.gif)
 
-<sup>**:see_no_evil: WALL·E and my Guinea Pig :hear_no_evil:**</sup>
-
-<br/>
+<sup>**:see_no_evil: WALL·E and my GUINEA PIG :hear_no_evil:**</sup>
 
 
 ## Benefits
