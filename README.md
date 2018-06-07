@@ -208,8 +208,6 @@ For USB Connection, the [Transport URI](#transports) is:
 
 - `usb`
 
-<br/>
-
 > Note: USB Transport is based on [FelHR85's UsbSerial Library](https://github.com/felHR85/UsbSerial).
 
 
