@@ -15,3 +15,8 @@
 - Update Transport Interface
 
 - Support USB Transport
+
+
+## [0.0.4] - 2018-06-07
+
+- Fix Bug - Bluetooth Transport is Slow
