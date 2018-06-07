@@ -96,6 +96,8 @@ Currently, these communication modes are supported:
 - [Connect via USB](#connect-via-usb)
 
 
+----
+
 ### Connect via Bluetooth
 
 #### Requirements
@@ -144,6 +146,8 @@ connectBoard("bt://HC-06".toTransport(context), ...)
 ````
 
 
+----
+
 ### Connect via WiFi
 
 #### Requirements
@@ -180,6 +184,8 @@ For example:
 connectBoard("tcp://192.168.4.1".toTransport(context), ...)
 ````
 
+
+----
 
 ### Connect via USB
 
