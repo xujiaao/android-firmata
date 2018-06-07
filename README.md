@@ -206,7 +206,7 @@ connectBoard("tcp://192.168.4.1".toTransport(context), ...)
 
 For USB Connection, the [Transport URI](#transports) is: `usb`
 
-> Note: USB Transport is Powered by [UsbSerial Project](https://github.com/felHR85/UsbSerial)
+> Note: USB Transport is based on [UsbSerial Library](https://github.com/felHR85/UsbSerial)
 
 
 ## Documentation
