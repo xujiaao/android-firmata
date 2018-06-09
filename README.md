@@ -21,9 +21,7 @@ which runs Firmata Protocol from your Android Application.
 
 - *Easy Peripherals with [Kotlin Programming Language](https://kotlinlang.org)*
 
-- *Easy Remote Controling with Android UI Components*
-
-- *Easy Animation with [Android Animator Api](https://developer.android.com/guide/topics/graphics/prop-animation)*
+- *Easy Remote Controling with Android UI Components and [Android Animator API](https://developer.android.com/guide/topics/graphics/prop-animation)*
 
 
 ## Installation
