@@ -97,13 +97,17 @@ class GetStartedActivity : AppCompatActivity() {
 
 可以使用下面两种 URI 进行蓝牙连接:
 
-- `bt:<bluetooth_name>` *(使用蓝牙名称进行匹配)*
+- `bt://<bluetooth_name>` *(使用蓝牙名称进行匹配)*
 
   - **使用蓝牙名称连接时, 请确保蓝牙设备已和您的手机配对**
 
-- `bt:<bluetooth_mac_address>` *(使用 Mac 地址进行匹配)*
+- `bt://<bluetooth_mac_address>` *(使用 Mac 地址进行匹配)*
 
   - **请使用 `.` 或 `-` 替换 Mac 地址中的 `:` 分隔符 (比如: `bt://00.11.22.33.44.55`)**
+
+- `bt://<bluetooth_mac_address>?pin=<pin>` *(针对 Android Things, 使用 Mac 地址进行匹配并使用 Pin 配对)*
+
+  - **请使用 `.` 或 `-` 替换 Mac 地址中的 `:` 分隔符 (比如: `bt://00.11.22.33.44.55?ping=1234`)**
 
 示例:
 
@@ -139,7 +143,7 @@ connectBoard("bt://HC-06".toTransport(context), ...)
 
 使用 WiFi 连接时, [Transport URI](#transports) 如下:
 
-- `tcp:<board_ip_address>:<board_port>`
+- `tcp://<board_ip_address>:<board_port>`
 
 示例:
 
@@ -172,7 +176,13 @@ connectBoard("tcp://192.168.4.1".toTransport(context), ...)
 
 #### 修改代码
 
-使用 USB 连接时, [Transport URI](#transports) 为: `usb`
+使用 USB 连接时, [Transport URI](#transports) 为:
+
+- `usb` *(选择第一个支持的 USB 设备)*
+
+- `usb://<device_name>` *(根据设备名选择设备)*
+
+  - 比如: `usb:/dev/bus/usb/001/006`
 
 
 ## 文档
@@ -183,21 +193,29 @@ Android-Firmata 使用 Transport URI 来指定 Android 和 Arduino 的通信方�
 
 - Bluetooth:
 
-  - `bt:<bluetooth_name>` *(使用蓝牙名称进行匹配)*
+  - `bt://<bluetooth_name>` *(使用蓝牙名称进行匹配)*
 
     - **使用蓝牙名称连接时, 请确保蓝牙设备已和您的手机配对**
 
-  - `bt:<bluetooth_mac_address>` *(使用 Mac 地址进行匹配)*
+  - `bt://<bluetooth_mac_address>` *(使用 Mac 地址进行匹配)*
 
     - **请使用 `.` 或 `-` 替换 Mac 地址中的 `:` 分隔符 (比如: `bt://00.11.22.33.44.55`)**
 
+  - `bt://<bluetooth_mac_address>?pin=<pin>` *(针对 Android Things, 使用 Mac 地址进行匹配并使用 Pin 配对)*
+
+    - **请使用 `.` 或 `-` 替换 Mac 地址中的 `:` 分隔符 (比如: `bt://00.11.22.33.44.55?ping=1234`)**
+
 - WiFi:
 
-  - `tcp:<board_ip_address>:<board_port>`
+  - `tcp://<board_ip_address>:<board_port>`
 
 - USB:
 
-  - `usb`
+  - `usb` *(选择第一个支持的 USB 设备)*
+
+  - `usb://<device_name>` *(根据设备名选择设备)*
+
+    - 比如: `usb:/dev/bus/usb/001/006`
 
 
 ## 示例应用 (:link: [下载链接](https://github.com/xujiaao/android-firmata/releases/latest))

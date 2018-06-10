@@ -125,13 +125,17 @@ to let it know which device should be connected.
 
 For Bluetooth Connection, the URI can be either of:
 
-- `bt:<bluetooth_name>` *(Matches the Bluetooth Name)*
+- `bt://<bluetooth_name>` *(Matches the Bluetooth Name)*
 
   - **Make sure the Bluetooth device has been bonded before connecting**
 
-- `bt:<bluetooth_mac_address>` *(Matches the Bluetooth Mac Address)*
+- `bt://<bluetooth_mac_address>` *(Matches the Bluetooth Mac Address)*
 
   - **Please replace the `:` in your Mac Address with `.` or `-` (e.g. `bt://00.11.22.33.44.55`)**
+
+- `bt://<bluetooth_mac_address>?pin=<pin>` *(For Android Things, Matches the Bluetooth Mac Address and Pairs with the Pin)*
+
+  - **Please replace the `:` in your Mac Address with `.` or `-` (e.g. `bt://00.11.22.33.44.55?pin=1234`)**
 
 For example:
 
@@ -170,7 +174,7 @@ StandardFirmataWiFi on the board.
 
 For WiFi Connection, the [Transport URI](#transports) is:
 
-- `tcp:<board_ip_address>:<board_port>`
+- `tcp://<board_ip_address>:<board_port>`
 
 For example:
 
@@ -205,7 +209,11 @@ connectBoard("tcp://192.168.4.1".toTransport(context), ...)
 
 For USB Connection, the [Transport URI](#transports) is:
 
-- `usb`
+- `usb` *(Selects the First Supported USB Device)*
+
+- `usb:/<device_name>` *(Selects the USB Device with the Specified Device Name)*
+
+  - For example: `usb:/dev/bus/usb/001/006`
 
 > Note: USB Transport is based on [FelHR85's UsbSerial Library](https://github.com/felHR85/UsbSerial).
 
@@ -219,21 +227,29 @@ being connected:
 
 - Bluetooth:
 
-  - `bt:<bluetooth_name>` *(Matches the Bluetooth Name)*
+  - `bt://<bluetooth_name>` *(Matches the Bluetooth Name)*
 
     - **Make sure the Bluetooth device has been bonded before connecting**
 
-  - `bt:<bluetooth_mac_address>` *(Matches the Bluetooth Mac Address)*
+  - `bt://<bluetooth_mac_address>` *(Matches the Bluetooth Mac Address)*
 
     - **Please replace the `:` in your Mac Address with `.` or `-` (e.g. `bt://00.11.22.33.44.55`)**
 
+  - `bt://<bluetooth_mac_address>?pin=<pin>` *(For Android Things, Matches the Bluetooth Mac Address and Pairs with the Pin)*
+
+    - **Please replace the `:` in your Mac Address with `.` or `-` (e.g. `bt://00.11.22.33.44.55?pin=1234`)**
+
 - WiFi:
 
-  - `tcp:<board_ip_address>:<board_port>`
+  - `tcp://<board_ip_address>:<board_port>`
 
 - USB:
 
-  - `usb`
+  - `usb` *(Selects the First Supported USB Device)*
+
+  - `usb:/<device_name>` *(Selects the USB Device with the Specified Device Name)*
+
+    - For example: `usb:/dev/bus/usb/001/006`
 
 
 ## Sample Application (:link: [Link](https://github.com/xujiaao/android-firmata/releases/latest))
@@ -257,6 +273,8 @@ peripheral devices with Android-Firmata.
 - Click the "Connect/Disconnect" button in the top right corner to connect your board
 
 - To edit the [Transport URI](#transports), open the "Settings Menu" in the Home Page, select "Transport"
+
+> **If you want to run the Sample Application on Android Things Devices, try [Vysor](https://github.com/xujiaao/android-firmata/wiki/Run-Sample-Application-on-Android-Things-Device).**
 
 
 ## TODOs
