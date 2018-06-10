@@ -274,7 +274,7 @@ peripheral devices with Android-Firmata.
 
 - To edit the [Transport URI](#transports), open the "Settings Menu" in the Home Page, select "Transport"
 
-> **If you want to run the Sample Application on Android Things, try [Vysor](https://github.com/xujiaao/android-firmata/wiki/Run-Sample-Application-on-Android-Things-Device).**
+> **If you want to run the Sample Application on Android Things, try [Vysor](https://github.com/xujiaao/android-firmata/wiki/Run-Sample-Application-on-Android-Things).**
 
 
 ## TODOs
