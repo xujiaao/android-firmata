@@ -20,3 +20,8 @@
 ## [0.0.4] - 2018-06-07
 
 - Fix Bug - Bluetooth Transport is Slow
+
+
+## [0.0.5] - 2018-06-10
+
+- Support Android Things
