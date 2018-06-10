@@ -32,7 +32,8 @@ private const val USB_PERMISSION_ACTION =
 
 class UsbTransport(
     context: Context,
-    private val baudRate: Int = USB_BAUD_RATE_DEFAULT
+    private val baudRate: Int = USB_BAUD_RATE_DEFAULT,
+    private val name: String? = null
 ) : Transport {
 
     private val mContext = context.applicationContext // use application context.
@@ -220,14 +221,23 @@ class UsbTransport(
                 throw IOException("Failed to list USB devices")
             }
 
-            usbDevices.forEach {
-                val device = it.value
-                if (UsbSerialDevice.isSupported(device)) {
-                    return device
+            if (name.isNullOrEmpty()) {
+                usbDevices.forEach {
+                    val device = it.value
+                    if (UsbSerialDevice.isSupported(device)) {
+                        return device
+                    }
                 }
-            }
 
-            throw IOException("No supported USB devices found")
+                throw IOException("No supported USB devices found")
+            } else {
+                val device = usbDevices[name] ?: throw IOException("No such device '$name'")
+                if (!UsbSerialDevice.isSupported(device)) {
+                    throw IOException("Device '$name' is not supported")
+                }
+
+                return device
+            }
         }
     }
 }
