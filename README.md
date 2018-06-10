@@ -23,7 +23,7 @@ which runs Firmata Protocol from your Android Application.
 
 - *Easy Remote Controling with Android UI Components and [Android Animator API](https://developer.android.com/guide/topics/graphics/prop-animation)*
 
-- ***Compatible with [Android Things Devices](https://developer.android.com/things/hardware) (Control Arduino Boards form Android Things Device)***
+- ***Compatible with [Android Things](https://developer.android.com/things/hardware) (Control Arduino Boards form Android Things)***
 
 ## Installation
 
@@ -133,7 +133,7 @@ For Bluetooth Connection, the URI can be either of:
 
   - **Please replace the `:` in your Mac Address with `.` or `-` (e.g. `bt://00.11.22.33.44.55`)**
 
-- `bt://<bluetooth_mac_address>?pin=<pin>` *(For Android Things, Matches the Bluetooth Mac Address and Pairs with the Pin)*
+- `bt://<bluetooth_mac_address>?pin=<pin>` *(For Android Things, Pairs with the Pin)*
 
   - **Please replace the `:` in your Mac Address with `.` or `-` (e.g. `bt://00.11.22.33.44.55?pin=1234`)**
 
@@ -235,7 +235,7 @@ being connected:
 
     - **Please replace the `:` in your Mac Address with `.` or `-` (e.g. `bt://00.11.22.33.44.55`)**
 
-  - `bt://<bluetooth_mac_address>?pin=<pin>` *(For Android Things, Matches the Bluetooth Mac Address and Pairs with the Pin)*
+  - `bt://<bluetooth_mac_address>?pin=<pin>` *(For Android Things, Pairs with the Pin)*
 
     - **Please replace the `:` in your Mac Address with `.` or `-` (e.g. `bt://00.11.22.33.44.55?pin=1234`)**
 
@@ -274,12 +274,11 @@ peripheral devices with Android-Firmata.
 
 - To edit the [Transport URI](#transports), open the "Settings Menu" in the Home Page, select "Transport"
 
-> **If you want to run the Sample Application on Android Things Devices, try [Vysor](https://github.com/xujiaao/android-firmata/wiki/Run-Sample-Application-on-Android-Things-Device).**
+> **If you want to run the Sample Application on Android Things, try [Vysor](https://github.com/xujiaao/android-firmata/wiki/Run-Sample-Application-on-Android-Things-Device).**
 
 
 ## TODOs
 
-- [x] Support USB transport
 - [ ] Support BLE transport
 
 
