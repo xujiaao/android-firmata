@@ -2,147 +2,197 @@ package com.xujiaao.android.firmata.transport.bluetooth
 
 import android.bluetooth.BluetoothAdapter
 import android.bluetooth.BluetoothDevice
-import android.bluetooth.BluetoothSocket
+import com.google.android.things.bluetooth.BluetoothConnectionManager
+import com.google.android.things.bluetooth.BluetoothPairingCallback
+import com.google.android.things.bluetooth.PairingParams
+import com.xujiaao.android.firmata.toolbox.AndroidThingsCompat
 import com.xujiaao.android.firmata.transport.Transport
-import java.io.BufferedInputStream
+import java.io.Closeable
 import java.io.IOException
-import java.io.InputStream
-import java.io.OutputStream
-import java.util.*
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 
-val UUID_SPP: UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB")
 
-abstract class BluetoothTransport : Transport {
+class AddressedBluetoothClientTransport(
+    private val address: String,
+    private val pin: String? = null
+) : Transport {
 
     override fun openConnection(): Transport.Connection = Connection()
 
-    @Throws(IOException::class)
-    protected abstract fun getBluetoothSocket(isClosed: () -> Boolean): BluetoothSocket
+    private inner class Connection : BluetoothClientConnection() {
 
-    private inner class Connection : Transport.Connection {
-
-        private var mClosed = false
-        private var mSocket: BluetoothSocket? = null
-        private var mInputStream: InputStream? = null
-        private var mOutputStream: OutputStream? = null
+        private var mATBluetoothPairingHelper: ATBluetoothPairingHelper? = null
 
         @Throws(IOException::class)
-        override fun connect() {
-            val socket = getBluetoothSocket { mClosed }
+        override fun getBluetoothDevice(): BluetoothDevice {
+            val adapter = BluetoothAdapter.getDefaultAdapter()
+                    ?: throw IOException("Bluetooth is unavailable")
 
-            var closed = false
-            synchronized(this) {
-                closed = mClosed
+            if (!adapter.isEnabled) {
+                throw IOException("Bluetooth is disabled")
+            }
 
-                if (!closed) {
-                    mSocket = socket
-                    mInputStream = BufferedInputStream(socket.inputStream, 32)
-                    mOutputStream = socket.outputStream
+            val device = adapter.getRemoteDevice(address)
+
+            if (AndroidThingsCompat.isAndroidThings) {
+                if (adapter.bondedDevices?.contains(device) == false) { // pair device...
+                    val atBluetoothPairingHelper = ATBluetoothPairingHelper(device, pin)
+                    synchronized(this) {
+                        mATBluetoothPairingHelper = atBluetoothPairingHelper
+                    }
+
+                    atBluetoothPairingHelper.await()
+
+                    synchronized(this) {
+                        mATBluetoothPairingHelper?.close()
+                        mATBluetoothPairingHelper = null
+
+                        if (isClosed()) {
+                            throw IOException("Transport connection is closed")
+                        }
+                    }
+
+                    if (adapter.bondedDevices?.contains(device) == false) {
+                        IOException("Failed to pair bluetooth device")
+                    }
                 }
             }
 
-            if (closed) {
-                socket.close()
-
-                throw IOException("Transport connection is closed")
-            }
+            return device
         }
 
-        @Throws(IOException::class)
-        override fun read(): Int =
-            mInputStream?.read() ?: throw IOException("Transport connection is closed")
+        override fun onClose() {
+            super.onClose()
+
+            mATBluetoothPairingHelper?.close()
+            mATBluetoothPairingHelper = null
+        }
+    }
+}
+
+class NamedBluetoothClientTransport(private val name: String) : Transport {
+
+    override fun openConnection(): Transport.Connection = Connection()
+
+    private inner class Connection : BluetoothClientConnection() {
 
         @Throws(IOException::class)
-        override fun write(data: ByteArray) =
-            mOutputStream?.run {
-                write(data)
-            } ?: throw IOException("Transport connection is closed")
+        override fun getBluetoothDevice(): BluetoothDevice {
+            val adapter = BluetoothAdapter.getDefaultAdapter()
+                    ?: throw IOException("Bluetooth is unavailable")
 
-        @Throws(IOException::class)
-        override fun close() {
-            var socket: BluetoothSocket? = null
-            synchronized(this) {
-                socket = mSocket
+            if (!adapter.isEnabled) {
+                throw IOException("Bluetooth is disabled")
+            }
 
+            return adapter.bondedDevices?.find {
+                it.name == name
+            } ?: throw IOException("No bonded bluetooth devices with name '$name' found")
+        }
+    }
+}
+
+// -------------------------------------------------------------------------------------------------
+// ATBluetoothPairingHelper
+// -------------------------------------------------------------------------------------------------
+
+private const val BLUETOOTH_PAIRING_TIMEOUT = 30_000L
+
+private class ATBluetoothPairingHelper(
+    private val device: BluetoothDevice,
+    private val pin: String?
+) : Closeable {
+
+    private var mClosed = false
+    private var mError: String? = null
+    private val mCountDownLatch: CountDownLatch = CountDownLatch(1)
+    private val mBluetoothConnectionManager = BluetoothConnectionManager.getInstance()
+    private val mBluetoothPairingCallback = object : BluetoothPairingCallback {
+
+        override fun onPairingInitiated(device: BluetoothDevice?, params: PairingParams) =
+            ensureDevice(device) {
+                when (params.pairingType) {
+                    PairingParams.PAIRING_VARIANT_PIN,
+                    PairingParams.PAIRING_VARIANT_PIN_16_DIGITS -> {
+                        if (!pin.isNullOrEmpty()) {
+                            mBluetoothConnectionManager.finishPairing(device, pin)
+                        } else {
+                            mError = "Pin is required for pairing"
+                            mCountDownLatch.countDown()
+                        }
+                    }
+                    PairingParams.PAIRING_VARIANT_CONSENT,
+                    PairingParams.PAIRING_VARIANT_PASSKEY_CONFIRMATION -> {
+                        mBluetoothConnectionManager.finishPairing(device)
+                    }
+                }
+            }
+
+        override fun onPaired(device: BluetoothDevice?) = ensureDevice(device) {
+            mCountDownLatch.countDown()
+        }
+
+        override fun onPairingError(
+            device: BluetoothDevice?,
+            error: BluetoothPairingCallback.PairingError?
+        ) = ensureDevice(device) {
+            val errorMessage = when (error?.errorCode ?: -1) {
+                BluetoothPairingCallback.PairingError.UNBOND_REASON_AUTH_FAILED -> "AUTH FAILED"
+                BluetoothPairingCallback.PairingError.UNBOND_REASON_AUTH_REJECTED -> "AUTH_REJECTED"
+                BluetoothPairingCallback.PairingError.UNBOND_REASON_AUTH_CANCELED -> "AUTH_CANCELED"
+                BluetoothPairingCallback.PairingError.UNBOND_REASON_REMOTE_DEVICE_DOWN -> "REMOTE_DEVICE_DOWN"
+                BluetoothPairingCallback.PairingError.UNBOND_REASON_DISCOVERY_IN_PROGRESS -> "DISCOVERY_IN_PROGRESS"
+                BluetoothPairingCallback.PairingError.UNBOND_REASON_AUTH_TIMEOUT -> "AUTH_TIMEOUT"
+                BluetoothPairingCallback.PairingError.UNBOND_REASON_REPEATED_ATTEMPTS -> "REPEATED_ATTEMPTS"
+                BluetoothPairingCallback.PairingError.UNBOND_REASON_REMOTE_AUTH_CANCELED -> "_AUTH_CANCELED"
+                BluetoothPairingCallback.PairingError.UNBOND_REASON_REMOVED -> "REMOVED"
+                else -> "UNKNOWN"
+            }
+
+            mError = "Pairing error occurs: $errorMessage"
+            mCountDownLatch.countDown()
+        }
+    }
+
+    init {
+        mBluetoothConnectionManager.registerPairingCallback(mBluetoothPairingCallback)
+        mBluetoothConnectionManager.initiatePairing(device)
+    }
+
+    @Throws(IOException::class)
+    fun await() {
+        try {
+            mCountDownLatch.await(BLUETOOTH_PAIRING_TIMEOUT, TimeUnit.MILLISECONDS)
+        } catch (e: InterruptedException) {
+            Thread.currentThread().interrupt()
+
+            throw IOException(e)
+        }
+
+        synchronized(this) {
+            if (!mClosed) {
                 mClosed = true
-                mSocket = null
-                mInputStream = null
-                mOutputStream = null
-            }
-
-            socket?.close()
-        }
-    }
-}
-
-// -------------------------------------------------------------------------------------------------
-// Client
-// -------------------------------------------------------------------------------------------------
-
-abstract class BluetoothClientTransport : BluetoothTransport() {
-
-    @Throws(IOException::class)
-    override fun getBluetoothSocket(isClosed: () -> Boolean): BluetoothSocket {
-        val device = getBluetoothDevice()
-        if (isClosed()) {
-            throw IOException("Transport connection is closed")
-        }
-
-        val socket = device.createRfcommSocketToServiceRecord(UUID_SPP)
-                ?: throw IOException("Failed to create Rfcomm socket")
-
-        if (!isClosed()) {
-            try {
-                socket.connect()
-            } catch (e: IOException) {
-                try {
-                    socket.close()
-                } catch (ignored: IOException) {
-                }
-
-                throw e
+                mBluetoothConnectionManager.unregisterPairingCallback(mBluetoothPairingCallback)
             }
         }
 
-        return socket
+        mError?.let { throw IOException(it) }
     }
 
-    @Throws(IOException::class)
-    protected abstract fun getBluetoothDevice(): BluetoothDevice
-}
-
-class AddressedBluetoothClientTransport(
-    private val address: String
-) : BluetoothClientTransport() {
-
-    @Throws(IOException::class)
-    override fun getBluetoothDevice(): BluetoothDevice {
-        val adapter = BluetoothAdapter.getDefaultAdapter()
-                ?: throw IOException("Bluetooth is unavailable")
-
-        if (!adapter.isEnabled) {
-            throw IOException("Bluetooth is disabled")
+    override fun close() {
+        synchronized(this) {
+            if (!mClosed) {
+                mClosed = true
+                mCountDownLatch.countDown()
+                mBluetoothConnectionManager.unregisterPairingCallback(mBluetoothPairingCallback)
+            }
         }
-
-        return adapter.getRemoteDevice(address)
     }
-}
 
-class NamedBluetoothClientTransport(
-    private val name: String
-) : BluetoothClientTransport() {
-
-    @Throws(IOException::class)
-    override fun getBluetoothDevice(): BluetoothDevice {
-        val adapter = BluetoothAdapter.getDefaultAdapter()
-                ?: throw IOException("Bluetooth is unavailable")
-
-        if (!adapter.isEnabled) {
-            throw IOException("Bluetooth is disabled")
+    private inline fun ensureDevice(target: BluetoothDevice?, action: () -> Unit) {
+        if (device == target) {
+            action()
         }
-
-        return adapter.bondedDevices?.find {
-            it.name == name
-        } ?: throw IOException("No bonded bluetooth devices with name '$name' found")
     }
 }

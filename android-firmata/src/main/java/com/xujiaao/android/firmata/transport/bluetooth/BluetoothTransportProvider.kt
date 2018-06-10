@@ -15,7 +15,7 @@ class BluetoothTransportProvider : TransportProvider {
         val address = host.toUpperCase().replace("[.-]".toRegex(), ":")
 
         return if (BluetoothAdapter.checkBluetoothAddress(address)) {
-            AddressedBluetoothClientTransport(address)
+            AddressedBluetoothClientTransport(address, uri.getQueryParameter("pin"))
         } else {
             NamedBluetoothClientTransport(host)
         }

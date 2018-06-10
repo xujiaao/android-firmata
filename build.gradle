@@ -16,6 +16,7 @@ buildscript {
                 /**
                  * Libraries (Android).
                  */
+                libAndroidThings           : 'com.google.android.things:androidthings:+',
                 libKotlinStdlib            : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
                 libKotlinxCoroutinesCore   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version",
                 libKotlinxCoroutinesAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinx_coroutines_version",

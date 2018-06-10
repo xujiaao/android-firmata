@@ -52,6 +52,8 @@
     <string name="label_scale_l">L Scale</string>
     <string name="label_scale_r">R Scale</string>
 
+    <string name="message_bluetooth_enable">Bluetooth Enabled</string>
+
     <!-- *************************************************************************************** -->
     <!-- Tips (Common) -->
     <!-- *************************************************************************************** -->

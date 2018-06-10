@@ -1,5 +1,7 @@
 package com.xujiaao.android.firmata.sample
 
+import android.app.Activity
+import android.bluetooth.BluetoothAdapter
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -10,11 +12,14 @@ import android.view.*
 import android.widget.BaseExpandableListAdapter
 import android.widget.EditText
 import android.widget.TextView
+import com.xujiaao.android.firmata.toolbox.AndroidThingsCompat
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.Appcompat
 import org.jetbrains.anko.sdk25.coroutines.onClick
 import java.util.*
 import kotlin.collections.LinkedHashMap
+
+const val REQUEST_CODE_ENABLE_BT = 1
 
 class SampleListActivity : AppCompatActivity() {
 
@@ -31,6 +36,17 @@ class SampleListActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
             ))
+        }
+
+        if (AndroidThingsCompat.isAndroidThings) {
+            BluetoothAdapter.getDefaultAdapter()?.let { bluetoothAdapter ->
+                if (!bluetoothAdapter.isEnabled) {
+                    startActivityForResult(
+                        Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE),
+                        REQUEST_CODE_ENABLE_BT
+                    )
+                }
+            }
         }
     }
 
@@ -51,6 +67,16 @@ class SampleListActivity : AppCompatActivity() {
             it.group
         }.mapTo(ArrayList()) {
             SampleGroup(it.key, it.value)
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (AndroidThingsCompat.isAndroidThings) {
+            if (requestCode == REQUEST_CODE_ENABLE_BT && resultCode == Activity.RESULT_OK) {
+                toast(R.string.message_bluetooth_enable)
+            }
         }
     }
 

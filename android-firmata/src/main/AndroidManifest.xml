@@ -2,6 +2,8 @@
     package="com.xujiaao.android.firmata">
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="com.google.android.things.permission.MANAGE_BLUETOOTH" />
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature
@@ -9,6 +11,10 @@
         android:required="false" />
 
     <application>
+
+        <uses-library
+            android:name="com.google.android.things"
+            android:required="false" />
 
         <!-- *********************************************************************************** -->
         <!-- Transport Provider (Network) -->
