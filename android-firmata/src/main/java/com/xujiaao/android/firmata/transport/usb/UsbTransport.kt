@@ -13,6 +13,7 @@ import android.os.SystemClock
 import com.felhr.usbserial.FTDISerialDevice
 import com.felhr.usbserial.UsbSerialDevice
 import com.felhr.usbserial.UsbSerialInterface
+import com.xujiaao.android.firmata.toolbox.AndroidThingsCompat
 import com.xujiaao.android.firmata.toolbox.toUnsignedInt
 import com.xujiaao.android.firmata.transport.Transport
 import java.io.Closeable
@@ -26,6 +27,8 @@ import kotlin.concurrent.withLock
 const val USB_BAUD_RATE_DEFAULT = 57600
 
 private const val USB_TRANSFER_TIMEOUT = 500 // 0 for infinite mode
+private const val USB_TRANSFER_START_DELAY = 1500L // delay after connecting
+private const val USB_TRANSFER_START_DELAY_AT = 4500L // delay after connecting (Android Things)
 private const val USB_PERMISSION_TIMEOUT = 30_000L
 private const val USB_PERMISSION_ACTION =
     "com.xujiaao.android.firmata.transport.usb.action.USB_PERMISSION"
@@ -99,6 +102,18 @@ class UsbTransport(
                 setStopBits(UsbSerialInterface.STOP_BITS_1)
                 setParity(UsbSerialInterface.PARITY_NONE)
                 setFlowControl(UsbSerialInterface.FLOW_CONTROL_OFF)
+            }
+
+            val delay = if (AndroidThingsCompat.isAndroidThings) {
+                USB_TRANSFER_START_DELAY_AT
+            } else {
+                USB_TRANSFER_START_DELAY
+            }
+
+            try {
+                Thread.sleep(delay) // wait a moment before reading/writing...
+            } catch (ignored: InterruptedException) {
+                Thread.currentThread().interrupt()
             }
 
             var closed = false
@@ -313,7 +328,7 @@ private object UsbConnectionFinalizer {
 
                 try {
                     mConditions[0].await()
-                } catch (e: InterruptedException) {
+                } catch (ignored: InterruptedException) {
                     Thread.currentThread().interrupt()
 
                     return
