@@ -23,6 +23,7 @@ which runs Firmata Protocol from your Android Application.
 
 - *Easy Remote Controling with Android UI Components and [Android Animator API](https://developer.android.com/guide/topics/graphics/prop-animation)*
 
+- ***Compatible with [Android Things Devices](https://developer.android.com/things/hardware) (Control Arduino Boards form Android Things Device)***
 
 ## Installation
 
