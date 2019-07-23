@@ -6,8 +6,8 @@ import com.xujiaao.android.firmata.board.driver.Motor
 import com.xujiaao.android.firmata.sample.R
 import com.xujiaao.android.firmata.sample.SampleActivity
 import kotlinx.android.synthetic.main.activity_motor.*
-import org.jetbrains.anko.sdk25.coroutines.onClick
-import org.jetbrains.anko.sdk25.coroutines.onSeekBarChangeListener
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.sdk27.coroutines.onSeekBarChangeListener
 
 abstract class MotorActivity : SampleActivity() {
 

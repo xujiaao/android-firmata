@@ -1,4 +1,3 @@
-rootProject.name = 'android-firmata-root'
 
-include ':android-firmata',
-        ':android-firmata-sample'
+include  ':android-firmata-sample',
+        ':android-firmata'

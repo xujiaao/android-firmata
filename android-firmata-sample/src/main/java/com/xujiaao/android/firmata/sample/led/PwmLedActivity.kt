@@ -6,8 +6,8 @@ import com.xujiaao.android.firmata.board.driver.Led
 import com.xujiaao.android.firmata.sample.R
 import com.xujiaao.android.firmata.sample.SampleActivity
 import kotlinx.android.synthetic.main.activity_led_pwm.*
-import org.jetbrains.anko.sdk25.coroutines.onClick
-import org.jetbrains.anko.sdk25.coroutines.onSeekBarChangeListener
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.sdk27.coroutines.onSeekBarChangeListener
 
 class PwmLedActivity : SampleActivity() {
 

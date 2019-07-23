@@ -8,8 +8,8 @@ import com.xujiaao.android.firmata.board.driver.pca9685.Pca9685
 import com.xujiaao.android.firmata.sample.R
 import com.xujiaao.android.firmata.sample.SampleActivity
 import kotlinx.android.synthetic.main.activity_led_pca9685.*
-import org.jetbrains.anko.sdk25.coroutines.onCheckedChange
-import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.sdk27.coroutines.onCheckedChange
+import org.jetbrains.anko.sdk27.coroutines.onClick
 
 class Pca9685LedActivity : SampleActivity() {
 

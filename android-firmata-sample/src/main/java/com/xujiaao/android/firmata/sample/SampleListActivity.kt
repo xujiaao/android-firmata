@@ -15,7 +15,7 @@ import android.widget.TextView
 import com.xujiaao.android.firmata.toolbox.AndroidThingsCompat
 import org.jetbrains.anko.*
 import org.jetbrains.anko.appcompat.v7.Appcompat
-import org.jetbrains.anko.sdk25.coroutines.onClick
+import org.jetbrains.anko.sdk27.coroutines.onClick
 import java.util.*
 import kotlin.collections.LinkedHashMap
 

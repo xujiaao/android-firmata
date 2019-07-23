@@ -7,8 +7,8 @@ import com.xujiaao.android.firmata.sample.R
 import com.xujiaao.android.firmata.sample.SampleActivity
 import com.xujiaao.android.firmata.toolbox.map
 import kotlinx.android.synthetic.main.activity_servo.*
-import org.jetbrains.anko.sdk25.coroutines.onClick
-import org.jetbrains.anko.sdk25.coroutines.onSeekBarChangeListener
+import org.jetbrains.anko.sdk27.coroutines.onClick
+import org.jetbrains.anko.sdk27.coroutines.onSeekBarChangeListener
 
 private const val ANIMATION_DURATION = 500L
 
